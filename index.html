@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Discount - Easy Sale Calculator</title>
+    <title>Smart Discount Calculator</title>
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -11,30 +11,29 @@
             --accent-green: #22c55e;
             --text-light: #f8fafc;
             --border-color: #334155;
-            --border-glow: rgba(255, 255, 255, 0.3);
+            --red-save: #ef4444;
         }
 
-        body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: var(--bg-dark); -webkit-font-smoothing: antialiased; color: var(--text-light); }
-        .top-header { background-color: #166534; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; color: white; border-bottom: 1px solid var(--border-color); }
-        .top-header h1 { margin: 0; font-size: 20px; font-weight: 900; letter-spacing: 0.5px; }
-        .lang-switcher { background: var(--bg-dark); border: 2px solid white; color: white; padding: 4px 8px; border-radius: 8px; font-size: 15px; cursor: pointer; font-weight: 800; }
-        .container { max-width: 800px; margin: 0 auto; padding: 5px; background: var(--bg-dark); min-height: 100vh; box-sizing: border-box; }
-        .converter-box { border: 1px solid var(--border-color); padding: 30px 20px; background: var(--card-bg); border-radius: 12px; margin: 15px 0 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
-        .row { display: flex; align-items: center; margin-bottom: 18px; }
-        .row label { width: 150px; font-size: 17px; color: #cbd5e1; font-weight: 900; line-height: 1.2; padding-right: 10px; }
-        .input-field { flex: 1; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 18px; font-weight: 800; width: 100%; box-sizing: border-box; height: 48px; background: #fff; color: #000; }
-        .result-field { background: #f0fdf4 !important; color: #166534 !important; border-color: #22c55e !important; }
-
-        .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
-        .tool-link { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: var(--accent-green); padding: 12px; border-radius: 8px; text-decoration: none; text-align: center; font-size: 13px; font-weight: 800; transition: 0.3s; }
-        .tool-link:hover { background: var(--accent-green); color: white; }
+        body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-light); -webkit-font-smoothing: antialiased; }
+        .top-header { background-color: #166534; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); }
+        .top-header h1 { margin: 0; font-size: 20px; font-weight: 900; color: white; }
         
-        footer { border-top: 1px solid var(--border-color); padding: 25px 15px; text-align: center; font-size: 13px; color: #94a3b8; }
-        .footer-info-block { border: 2px solid var(--border-glow); border-radius: 12px; padding: 18px; margin-bottom: 15px; background: rgba(255, 255, 255, 0.05); }
-        .footer-link { color: var(--accent-green); text-decoration: underline; cursor: pointer; padding: 0 8px; font-weight: 900; }
-        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; }
-        .modal-content { background: var(--card-bg); margin: 5% auto; padding: 25px; width: 90%; max-width: 600px; border-radius: 12px; position: relative; color: var(--text-light); border: 2px solid var(--border-glow); }
-        .close-btn { position: absolute; right: 10px; top: 0; font-size: 38px; cursor: pointer; color: var(--text-light); padding: 10px; }
+        .lang-switcher { background: var(--bg-dark); border: 2px solid white; color: white; padding: 4px 8px; border-radius: 8px; font-size: 14px; font-weight: 800; }
+        
+        .container { max-width: 600px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
+        .calc-box { border: 1px solid var(--border-color); padding: 25px; background: var(--card-bg); border-radius: 12px; margin-top: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        
+        .row { display: flex; align-items: center; margin-bottom: 15px; }
+        .row label { width: 140px; font-size: 16px; color: #cbd5e1; font-weight: 800; }
+        
+        .input-field { flex: 1; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 18px; font-weight: 800; background: white; color: black; outline: none; }
+        .result-field { background: #f0fdf4 !important; color: #166534 !important; border-color: var(--accent-green) !important; cursor: default; }
+        .save-field { background: #fef2f2 !important; color: var(--red-save) !important; border-color: #fca5a5 !important; }
+
+        .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 30px; }
+        .tool-link { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: var(--accent-green); padding: 12px; border-radius: 8px; text-decoration: none; text-align: center; font-size: 13px; font-weight: 800; }
+
+        footer { margin-top: 40px; border-top: 1px solid var(--border-color); padding: 20px 0; text-align: center; color: #94a3b8; font-size: 13px; }
     </style>
 </head>
 <body>
@@ -50,81 +49,67 @@
 </div>
 
 <div class="container">
-    <div class="converter-box">
-        <div class="row"><label id="lbl-price">Original Price:</label><input type="number" id="price" class="input-field" value="100" oninput="calculate()"></div>
-        <div class="row"><label id="lbl-discount">Discount (%):</label><input type="number" id="discount" class="input-field" value="20" oninput="calculate()"></div>
-        <div class="row" style="margin-top:25px; border-top: 1px solid var(--border-color); padding-top: 20px;">
-            <label id="lbl-final" style="color: var(--accent-green);">Final Price:</label>
-            <input type="text" id="finalPrice" class="input-field result-field" readonly>
+    <div class="calc-box">
+        <div class="row">
+            <label id="lbl-price">Price:</label>
+            <input type="number" id="price" class="input-field" value="100" oninput="calculate()">
         </div>
-        <div class="row"><label id="lbl-save">You Save:</label><input type="text" id="saveAmount" class="input-field result-field" readonly style="color: #ef4444 !important; background: #fef2f2 !important; border-color: #fca5a5 !important;"></div>
+        <div class="row">
+            <label id="lbl-discount">Discount %:</label>
+            <input type="number" id="discount" class="input-field" value="20" oninput="calculate()">
+        </div>
+        
+        <div style="margin: 25px 0 15px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+            <div class="row">
+                <label id="lbl-final" style="color: var(--accent-green);">Final Price:</label>
+                <input type="text" id="finalPrice" class="input-field result-field" readonly>
+            </div>
+            <div class="row">
+                <label id="lbl-save">You Save:</label>
+                <input type="text" id="saveAmount" class="input-field save-field" readonly>
+            </div>
+        </div>
     </div>
 
     <h3 style="text-align: center; font-size: 14px; color: #64748b; text-transform: uppercase; margin-top: 30px;" id="txt-other">Other Tools</h3>
     <div class="tools-grid">
-        <a href="https://smart-converter.github.io/unit-converter/" class="tool-link" id="lnk-unit">Unit Converter</a>
-        <a href="https://smart-converter.github.io/loan-calculator/" class="tool-link" id="lnk-loan">Loan Calculator</a>
-        <a href="#" class="tool-link" id="lnk-vat">VAT Calculator</a>
-        <a href="#" class="tool-link" id="lnk-perc">Percentage Calc</a>
+        <a href="#" class="tool-link">Unit Converter</a>
+        <a href="#" class="tool-link">Loan Calculator</a>
+        <a href="#" class="tool-link">VAT Calculator</a>
+        <a href="#" class="tool-link">Percentage Calc</a>
     </div>
-</div>
 
-<footer>
-    <div class="footer-info-block" id="footer-full-text"></div>
-    <div style="margin-top:10px;">
-        <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy Policy</span>
-        <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms of Use</span>
-    </div>
-</footer>
-
-<div id="siteModal" class="modal" onclick="if(event.target == this) closeModal()">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">×</span>
-        <div id="modalBody"></div>
-    </div>
+    <footer>
+        <p id="txt-footer">SmartDiscount.io — fast & easy sale calculator.</p>
+        <p>© 2025</p>
+    </footer>
 </div>
 
 <script>
     const translations = {
         en: {
-            price: "Original Price:", discount: "Discount (%):", final: "Final Price:", save: "You Save:",
-            unit: "Unit Converter", loan: "Loan Calculator", vat: "VAT Calculator", perc: "Percentage Calc",
-            privacy: "Privacy Policy", terms: "Terms of Use", other: "Other Tools",
-            footerFull: "SmartDiscount.io helps you quickly calculate savings during shopping.",
-            privText: "<h2>Privacy Policy</h2><p>Data stays on your device.</p>",
-            termsText: "<h2>Terms of Use</h2><p>For information only.</p>"
+            price: "Price:", discount: "Discount %:", final: "Final Price:", save: "You Save:",
+            other: "Other Tools", footer: "SmartDiscount.io — fast & easy sale calculator."
         },
         uk: {
             price: "Ціна:", discount: "Знижка %:", final: "До сплати:", save: "Економія:",
-            unit: "Конвертер", loan: "Кредитний калькулятор", vat: "Калькулятор ПДВ", perc: "Відсотки",
-            privacy: "Конфіденційність", terms: "Умови", other: "Інші інструменти",
-            footerFull: "SmartDiscount.io допоможе вам швидко розрахувати економію під час покупок.",
-            privText: "<h2>Конфіденційність</h2><p>Дані не зберігаються.</p>",
-            termsText: "<h2>Умови використання</h2><p>Тільки для інформації.</p>"
+            other: "Інші інструменти", footer: "SmartDiscount.io — швидкий розрахунок знижок."
         },
         es: {
-            price: "Precio:", discount: "Descuento %:", final: "Final:", save: "Ahorro:",
-            unit: "Convertidor", loan: "Préstamos", vat: "IVA", perc: "Porcentajes",
-            privacy: "Privacidad", terms: "Términos", other: "Herramientas",
-            footerFull: "SmartDiscount.io ayuda a calcular ahorros rápidamente.",
-            privText: "<h2>Privacidad</h2><p>Sin almacenamiento.</p>",
-            termsText: "<h2>Términos</h2><p>Uso informativo.</p>"
+            price: "Precio:", discount: "Descuento %:", final: "Precio Final:", save: "Ahorro:",
+            other: "Herramientas", footer: "SmartDiscount.io — calculadora de descuentos."
         },
         de: {
             price: "Preis:", discount: "Rabatt %:", final: "Endpreis:", save: "Ersparnis:",
-            unit: "Konverter", loan: "Kreditrechner", vat: "MwSt", perc: "Prozente",
-            privacy: "Datenschutz", terms: "AGB", other: "Andere Tools",
-            footerFull: "SmartDiscount.io berechnet Ihre Ersparnis beim Einkauf.",
-            privText: "<h2>Datenschutz</h2><p>Keine Speicherung.</p>",
-            termsText: "<h2>AGB</h2><p>Nur zur Information.</p>"
+            other: "Andere Tools", footer: "SmartDiscount.io — Rabattrechner."
         }
     };
 
-    let curLang = localStorage.getItem('langDisc') || 'en';
+    let curLang = localStorage.getItem('langDiscount') || 'en';
 
     function changeLang(lang) {
         curLang = lang;
-        localStorage.setItem('langDisc', lang);
+        localStorage.setItem('langDiscount', lang);
         updateUI();
     }
 
@@ -136,33 +121,21 @@
         document.getElementById('lbl-final').innerText = t.final;
         document.getElementById('lbl-save').innerText = t.save;
         document.getElementById('txt-other').innerText = t.other;
-        
-        document.getElementById('lnk-unit').innerText = t.unit;
-        document.getElementById('lnk-loan').innerText = t.loan;
-        document.getElementById('lnk-vat').innerText = t.vat;
-        document.getElementById('lnk-perc').innerText = t.perc;
-
-        document.getElementById('footer-full-text').innerText = t.footerFull;
-        document.getElementById('link-privacy').innerText = t.privacy;
-        document.getElementById('link-terms').innerText = t.terms;
+        document.getElementById('txt-footer').innerText = t.footer;
         calculate();
     }
 
     function calculate() {
         const p = parseFloat(document.getElementById('price').value) || 0;
         const d = parseFloat(document.getElementById('discount').value) || 0;
-        const s = (p * d) / 100;
-        const f = p - s;
-        document.getElementById('finalPrice').value = f.toLocaleString(undefined, {minimumFractionDigits: 2});
-        document.getElementById('saveAmount').value = s.toLocaleString(undefined, {minimumFractionDigits: 2});
+        
+        const save = (p * d) / 100;
+        const final = p - save;
+
+        document.getElementById('finalPrice').value = final.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('saveAmount').value = save.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 
-    function openPol(type) {
-        const t = translations[curLang];
-        document.getElementById('modalBody').innerHTML = type === 'privacy' ? t.privText : t.termsText;
-        document.getElementById('siteModal').style.display = 'block';
-    }
-    function closeModal() { document.getElementById('siteModal').style.display = 'none'; }
     updateUI();
 </script>
 </body>
