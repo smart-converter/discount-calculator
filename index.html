@@ -15,14 +15,11 @@
         }
 
         body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: var(--bg-dark); -webkit-font-smoothing: antialiased; color: var(--text-light); }
-        
         .top-header { background-color: #166534; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; color: white; border-bottom: 1px solid var(--border-color); }
         .top-header h1 { margin: 0; font-size: 20px; font-weight: 900; letter-spacing: 0.5px; }
-        
         .lang-switcher { background: var(--bg-dark); border: 2px solid white; color: white; padding: 4px 8px; border-radius: 8px; font-size: 15px; cursor: pointer; font-weight: 800; }
         
         .container { max-width: 800px; margin: 0 auto; padding: 5px; background: var(--bg-dark); min-height: 100vh; box-sizing: border-box; }
-        
         .ad-space { background: rgba(255, 255, 255, 0.05); border: 1px dashed var(--border-color); margin: 10px 0; text-align: center; padding: 15px; color: #64748b; font-size: 11px; min-height: 90px; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
         
         .converter-box { border: 1px solid var(--border-color); padding: 30px 20px; background: var(--card-bg); border-radius: 12px; margin: 15px 0 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
@@ -88,10 +85,10 @@
 
 <footer>
     <div class="footer-info-block" id="footer-full-text"></div>
-    <p>© 2026 SmartDiscount.io - Quick Savings Calculator</p>
+    <p>© 2026 SmartDiscount.io</p>
     <div style="margin-top:10px;">
-        <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy Policy</span>
-        <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms of Use</span>
+        <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy</span>
+        <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms</span>
     </div>
 </footer>
 
@@ -106,27 +103,31 @@
     const translations = {
         en: {
             price: "Price:", discount: "Discount %:", final: "Final Price:", save: "You Save:",
-            other: "Other Elite Tools", footer: "SmartDiscount.io helps you quickly calculate the final price and your total savings while shopping.",
-            priv: "<h2>Privacy</h2><p>Your shopping data is processed locally in your browser and is never stored.</p>",
-            terms: "<h2>Terms</h2><p>This tool is for informational use only. Accuracy is not guaranteed.</p>"
+            other: "Other Elite Tools", footer: "SmartDiscount.io helps you quickly calculate savings.",
+            privacy: "Privacy Policy", terms: "Terms of Use",
+            privText: "<h2>Privacy</h2><p>Data stays in your browser.</p>",
+            termsText: "<h2>Terms</h2><p>For informational use only.</p>"
         },
         uk: {
             price: "Ціна:", discount: "Знижка %:", final: "До сплати:", save: "Економія:",
-            other: "Інші професійні інструменти", footer: "SmartDiscount.io допоможе вам миттєво порахувати фінальну ціну та суму вашої економії.",
-            priv: "<h2>Конфіденційність</h2><p>Ваші дані обробляються локально і не передаються на сервер.</p>",
-            terms: "<h2>Умови</h2><p>Інструмент надається 'як є' для ознайомлювальних цілей.</p>"
+            other: "Інші інструменти", footer: "SmartDiscount.io допоможе вам швидко розрахувати економію.",
+            privacy: "Конфіденційність", terms: "Умови",
+            privText: "<h2>Конфіденційність</h2><p>Дані не збираються.</p>",
+            termsText: "<h2>Умови</h2><p>Тільки для ознайомлення.</p>"
         },
         es: {
-            price: "Precio:", discount: "Descuento %:", final: "Precio final:", save: "Ahorro:",
-            other: "Otras herramientas", footer: "SmartDiscount.io le ayuda a calcular rápidamente el precio final y su ahorro total.",
-            priv: "<h2>Privacidad</h2><p>Sin recolección de datos personales.</p>",
-            terms: "<h2>Términos</h2><p>Uso informativo solamente.</p>"
+            price: "Precio:", discount: "Descuento %:", final: "Final:", save: "Ahorro:",
+            other: "Otras herramientas", footer: "SmartDiscount.io ayuda a calcular ahorros rápidamente.",
+            privacy: "Privacidad", terms: "Términos",
+            privText: "<h2>Privacidad</h2><p>Sin recolección de datos.</p>",
+            termsText: "<h2>Términos</h2><p>Uso informativo solamente.</p>"
         },
         de: {
             price: "Preis:", discount: "Rabatt %:", final: "Endpreis:", save: "Ersparnis:",
-            other: "Andere Tools", footer: "SmartDiscount.io berechnet schnell Ihren Endpreis und Ihre gesamte Ersparnis beim Einkauf.",
-            priv: "<h2>Datenschutz</h2><p>Keine Speicherung Ihrer Daten.</p>",
-            terms: "<h2>AGB</h2><p>Nur zur Information.</p>"
+            other: "Andere Tools", footer: "SmartDiscount.io berechnet Ihre Ersparnis.",
+            privacy: "Datenschutz", terms: "AGB",
+            privText: "<h2>Datenschutz</h2><p>Keine Speicherung Ihrer Daten.</p>",
+            termsText: "<h2>AGB</h2><p>Nur zur Information.</p>"
         }
     };
 
@@ -147,8 +148,11 @@
         document.getElementById('lbl-save').innerText = t.save;
         document.getElementById('txt-other-tools').innerText = t.other;
         document.getElementById('footer-full-text').innerText = t.footer;
-        document.getElementById('link-privacy').innerText = t.priv ? (curLang === 'uk' ? "Конфіденційність" : "Privacy Policy") : "Privacy";
-        document.getElementById('link-terms').innerText = curLang === 'uk' ? "Умови" : "Terms of Use";
+        
+        // Виправлення перекладу кнопок:
+        document.getElementById('link-privacy').innerText = t.privacy;
+        document.getElementById('link-terms').innerText = t.terms;
+        
         calculate();
     }
 
@@ -163,7 +167,7 @@
 
     function openPol(type) {
         const t = translations[curLang];
-        document.getElementById('modalBody').innerHTML = type === 'privacy' ? t.priv : t.terms;
+        document.getElementById('modalBody').innerHTML = type === 'privacy' ? t.privText : t.termsText;
         document.getElementById('siteModal').style.display = 'block';
     }
     function closeModal() { document.getElementById('siteModal').style.display = 'none'; }
