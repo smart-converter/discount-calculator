@@ -37,7 +37,8 @@
         .seo-content h2 { color: var(--accent-green); font-size: 19px; margin: 20px 0 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; font-weight: 900; }
 
         .tools-network { padding: 20px 15px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 20px; }
-        .tools-network h4 { margin: 0 0 15px 0; color: var(--text-muted); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        /* Збережено візуальний стиль h4 для нового тегу h2 */
+        .tools-network h2 { margin: 0 0 15px 0; color: var(--text-muted); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; font-weight: normal; }
         .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .tool-link-btn { padding: 12px 5px; border: 1px solid var(--accent-green); color: var(--accent-green); text-decoration: none; border-radius: 8px; font-size: 12px; font-weight: 900; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
         .tool-link-btn:last-child:nth-child(odd) { grid-column: 1 / span 2; justify-self: center; width: calc(50% - 5px); }
@@ -53,7 +54,7 @@
 </head>
 <body>
 
-<div class="top-header">
+<header class="top-header">
     <h1>SmartDiscount.io</h1>
     <select class="lang-switcher" onchange="changeLang(this.value)" id="langSelect" aria-label="Select Language">
         <option value="en">English</option>
@@ -61,9 +62,9 @@
         <option value="es">Español</option>
         <option value="de">Deutsch</option>
     </select>
-</div>
+</header>
 
-<div class="container">
+<main class="container">
     <div class="ad-space">ADVERTISEMENT AREA</div>
     
     <div class="converter-box">
@@ -76,10 +77,10 @@
         </div>
     </div>
 
-    <div class="seo-content" id="seo-box"></div>
+    <section class="seo-content" id="seo-box"></section>
 
-    <div class="tools-network">
-        <h4 id="txt-other-tools">Elite Network Tools</h4>
+    <section class="tools-network">
+        <h2 id="txt-other-tools">Elite Network Tools</h2>
         <div class="tools-grid">
             <a href="https://smart-converter.github.io/unit-converter/" class="tool-link-btn" id="lnk-unit">Unit Converter</a>
             <a href="https://smart-converter.github.io/currency-converter/" class="tool-link-btn" id="lnk-cur">Currency Converter</a>
@@ -89,8 +90,8 @@
             <a href="https://smart-converter.github.io/tip-calculator/" class="tool-link-btn" id="lnk-tip">Tip Calculator</a>
             <a href="https://smart-converter.github.io/bmi-calculator/" class="tool-link-btn" id="lnk-bmi">BMI Calculator</a>
         </div>
-    </div>
-</div>
+    </section>
+</main>
 
 <footer>
     <div class="footer-info-block" id="footer-full-text"></div>
