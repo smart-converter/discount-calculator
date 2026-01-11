@@ -121,7 +121,7 @@
             price: "Початкова ціна:", discount: "Знижка %:", final: "Ціна зі знижкою:", save: "Ви економите:",
             other: "Інші професійні інструменти", privacy: "Конфіденційність", terms: "Умови",
             unit: "Конвертер", cur: "Курси валют", perc: "Відсотки", vat: "ПДВ", loan: "Кредити", tip: "Чайові", bmi: "Індекс маси",
-            footer: "SmartDiscount.io — це спеціалізований інструмент, створений для спрощення ваших покупок. Незалежно від того, чи рахуєте ви пропозиції Чорної п’ятниці, чи сезонні розпродажі, наш калькулятор забезпечує миттєву точність розрахунків.",
+            footer: "SmartDiscount.io — це спеціалізований інструмент, створений для спрощення ваших покупок. Незалежно від того, чи рахуєте ви пропозиції Чорної п’ятниці, чи сезонні розпродажі, наш калькулятор забезпевує миттєву точність розрахунків.",
             seo: `<h2>Керуйте своїм бюджетом розумно</h2><p>Наш <strong>калькулятор знижок</strong> — ідеальний помічник для вигідного шопінгу. Він допоможе точно визначити суму до сплати та розмір вашої вигоди. Забудьте про складні розрахунки в голові біля каси.</p><h2>Як це працює?</h2><p>Введіть початкову ціну товару та відсоток знижки. Система миттєво покаже фінальну вартість та суму економії з точністю до копійок.</p>`,
             privText: "<h2>Конфіденційність</h2><p>Ми не відстежуємо ваші покупки. Усі розрахунки відбуваються локально у вашому браузері.</p>", 
             termsText: "<h2>Умови</h2><p>Інформація надається для ознайомлення. Фінальна ціна в чеку може відрізнятися залежно від правил заокруглення магазину.</p>"
@@ -132,15 +132,15 @@
             unit: "Convertidor", cur: "Moneda", perc: "Porcentajes", vat: "IVA", loan: "Préstamos", tip: "Propina", bmi: "IMC",
             footer: "SmartDiscount.io es una herramienta especializada diseñada para simplificar sus compras. Ya sea calculando ofertas del Black Friday o rebajas de temporada, nuestra calculadora ofrece precisión instantánea en cualquier dispositivo.",
             seo: `<h2>Optimiza tus Compras</h2><p>Nuestra <strong>calculadora de descuentos</strong> es el aliado perfecto para los compradores inteligentes. Te ayuda a saber exactamente cuánto pagarás y cuánto ahorrarás sin errores manuales.</p><h2>Fácil de usar</h2><p>Solo ingresa el precio inicial y el porcentaje de descuento. Obtén resultados inmediatos sobre el ahorro total y el precio final de venta en segundos.</p>`,
-            privText: "<h2>Privacidad</h2><p>No almacenamos sus datos. Todos los cálculos se realizan de forma privada en su navegador.</p>", 
-            termsText: "<h2>Términos</h2><p>Uso informativo. Los precios finales pueden variar según impuestos locales o políticas específicas de la tienda.</p>"
+            privText: "<h2>Privacy</h2><p>No almacenamos sus datos. Todos los cálculos se realizan de forma privada en su navegador.</p>", 
+            termsText: "<h2>Terms</h2><p>Uso informativo. Los precios finales pueden variar según impuestos locales o políticas específicas de la tienda.</p>"
         },
         de: {
             price: "Originalpreis:", discount: "Rabatt %:", final: "Endpreis:", save: "Ersparnis:",
             other: "Andere Elite-Tools", privacy: "Datenschutz", terms: "AGB",
             unit: "Einheiten", cur: "Währung", perc: "Prozentrechner", vat: "MwSt", loan: "Kreditrechner", tip: "Trinkgeld", bmi: "BMI Rechner",
             footer: "SmartDiscount.io ist ein spezialisiertes Tool, das entwickelt wurde, um Ihr Einkaufserlebnis zu vereinfachen. Berechnen Sie Black-Friday-Angebote oder saisonale Rabatte sofort und präzise mit unserem Tool.",
-            seo: `<h2>Shoppen Sie mit System</h2><p>Unser <strong>Rabattrechner</strong> ist der ideale Begleiter für preisbewusste Käufer. Erfahren Sie sofort, wie viel Sie sparen und was der tatsächliche Endpreis an der Kasse sein wird.</p><h2>Präзise Berechnungen</h2><p>Geben Sie einfach den Grundpreis und den Rabattsatz ein. Unser Rechner liefert Ihnen die exakte Ersparnis und den reduzierten Preis in Echtzeit.</p>`,
+            seo: `<h2>Shoppen Sie mit System</h2><p>Unser <strong>Rabattrechner</strong> ist der ideale Begleiter für preisbewusste Käufer. Erfahren Sie sofort, wie viel Sie sparen und was der tatsächliche Endpreis an der Kasse sein wird.</p><h2>Präzise Berechnungen</h2><p>Geben Sie einfach den Grundpreis und den Rabattsatz ein. Unser Rechner liefert Ihnen die exakte Ersparnis und den reduzierten Preis in Echtzeit.</p>`,
             privText: "<h2>Datenschutz</h2><p>Ihre Daten bleiben privat. Alle Berechnungen werden lokal auf Ihrem Gerät durchgeführt.</p>", 
             termsText: "<h2>AGB</h2><p>Die bereitgestellten Informationen dienen der Schätzung. Der tatsächliche Endpreis kann je nach Rundung im Geschäft variieren.</p>"
         }
@@ -156,45 +156,70 @@
 
     function updateUI() {
         const t = translations[curLang] || translations.en;
-        document.getElementById('langSelect').value = curLang;
-        document.getElementById('lbl-price').innerText = t.price;
-        document.getElementById('lbl-discount').innerText = t.discount;
-        document.getElementById('lbl-final').innerText = t.final;
-        document.getElementById('lbl-save').innerText = t.save;
-        document.getElementById('txt-other-tools').innerText = t.other;
-        document.getElementById('footer-full-text').innerText = t.footer;
-        document.getElementById('link-privacy').innerText = t.privacy;
-        document.getElementById('link-terms').innerText = t.terms;
-        document.getElementById('seo-box').innerHTML = t.seo;
         
-        document.getElementById('lnk-unit').innerText = t.unit;
-        document.getElementById('lnk-cur').innerText = t.cur;
-        document.getElementById('lnk-perc').innerText = t.perc;
-        document.getElementById('lnk-vat').innerText = t.vat;
-        document.getElementById('lnk-loan').innerText = t.loan;
-        document.getElementById('lnk-tip').innerText = t.tip;
-        document.getElementById('lnk-bmi').innerText = t.bmi;
+        // Перевірка наявності елементів перед оновленням
+        const elements = {
+            'langSelect': t => document.getElementById('langSelect').value = curLang,
+            'lbl-price': t => document.getElementById('lbl-price').innerText = t.price,
+            'lbl-discount': t => document.getElementById('lbl-discount').innerText = t.discount,
+            'lbl-final': t => document.getElementById('lbl-final').innerText = t.final,
+            'lbl-save': t => document.getElementById('lbl-save').innerText = t.save,
+            'txt-other-tools': t => document.getElementById('txt-other-tools').innerText = t.other,
+            'footer-full-text': t => document.getElementById('footer-full-text').innerText = t.footer,
+            'link-privacy': t => document.getElementById('link-privacy').innerText = t.privacy,
+            'link-terms': t => document.getElementById('link-terms').innerText = t.terms,
+            'seo-box': t => document.getElementById('seo-box').innerHTML = t.seo,
+            'lnk-unit': t => document.getElementById('lnk-unit').innerText = t.unit,
+            'lnk-cur': t => document.getElementById('lnk-cur').innerText = t.cur,
+            'lnk-perc': t => document.getElementById('lnk-perc').innerText = t.perc,
+            'lnk-vat': t => document.getElementById('lnk-vat').innerText = t.vat,
+            'lnk-loan': t => document.getElementById('lnk-loan').innerText = t.loan,
+            'lnk-tip': t => document.getElementById('lnk-tip').innerText = t.tip,
+            'lnk-bmi': t => document.getElementById('lnk-bmi').innerText = t.bmi
+        };
+
+        for (let id in elements) {
+            if (document.getElementById(id)) {
+                elements[id](t);
+            }
+        }
         
         calculate();
     }
 
     function calculate() {
-        const p = parseFloat(document.getElementById('price').value) || 0;
-        const d = parseFloat(document.getElementById('discount').value) || 0;
+        const pInput = document.getElementById('price');
+        const dInput = document.getElementById('discount');
+        if (!pInput || !dInput) return;
+
+        const p = parseFloat(pInput.value) || 0;
+        const d = parseFloat(dInput.value) || 0;
         const s = (p * d) / 100;
         const f = p - s;
-        document.getElementById('finalPrice').value = f.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('saveAmount').value = s.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        
+        const finalPriceEl = document.getElementById('finalPrice');
+        const saveAmountEl = document.getElementById('saveAmount');
+        
+        if (finalPriceEl) finalPriceEl.value = f.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        if (saveAmountEl) saveAmountEl.value = s.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 
     function openPol(type) {
         const t = translations[curLang] || translations.en;
-        document.getElementById('modalBody').innerHTML = type === 'privacy' ? t.privText : t.termsText;
-        document.getElementById('siteModal').style.display = 'block';
+        const modalBody = document.getElementById('modalBody');
+        if (modalBody) {
+            modalBody.innerHTML = type === 'privacy' ? t.privText : t.termsText;
+            document.getElementById('siteModal').style.display = 'block';
+        }
     }
-    function closeModal() { document.getElementById('siteModal').style.display = 'none'; }
     
-    updateUI();
+    function closeModal() { 
+        const modal = document.getElementById('siteModal');
+        if (modal) modal.style.display = 'none'; 
+    }
+    
+    // Запуск оновлення після завантаження
+    window.onload = updateUI;
 </script>
 </body>
 </html>
