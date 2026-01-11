@@ -18,26 +18,35 @@
         }
 
         body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 0; background-color: var(--bg-dark); -webkit-font-smoothing: antialiased; color: var(--text-light); }
+        
         .top-header { background-color: #166534; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; color: white; border-bottom: 1px solid var(--border-color); }
         .top-header h1 { margin: 0; font-size: 20px; font-weight: 900; }
         .lang-switcher { background: var(--bg-dark); border: 2px solid white; color: white; padding: 4px 8px; border-radius: 8px; font-size: 15px; cursor: pointer; font-weight: 800; }
+        
         .container { max-width: 800px; margin: 0 auto; padding: 5px; box-sizing: border-box; min-height: 100vh; }
+        
         .ad-space { background: rgba(255, 255, 255, 0.05); border: 1px dashed var(--border-color); margin: 10px 0; text-align: center; padding: 15px; color: var(--text-muted); font-size: 11px; min-height: 90px; height: 90px; display: flex; align-items: center; justify-content: center; border-radius: 8px; box-sizing: border-box; }
+        
         .converter-box { border: 1px solid var(--border-color); padding: 30px 20px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); margin-top: 10px; }
         .row { display: flex; align-items: center; margin-bottom: 18px; }
         .row label { width: 150px; font-size: 16px; color: var(--text-muted); font-weight: 700; line-height: 1.2; }
         .input-field { flex: 1; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 19px; font-weight: 800; width: 100%; box-sizing: border-box; height: 48px; background: #fff; color: #000; outline: none; }
         .result-field { background: #f0fdf4 !important; color: #166534 !important; border-color: #22c55e !important; }
         .save-field { background: #fef2f2 !important; color: #ef4444 !important; border-color: #fca5a5 !important; }
-        .seo-content { padding: 15px; line-height: 1.7; font-size: 15px; color: var(--text-muted); border-top: 1px solid var(--border-color); margin-top: 20px; display: block !important; visibility: visible !important; }
+
+        .seo-content { padding: 15px; line-height: 1.7; font-size: 15px; color: var(--text-muted); border-top: 1px solid var(--border-color); margin-top: 20px; }
         .seo-content h2 { color: var(--accent-green); font-size: 19px; margin: 20px 0 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; font-weight: 900; }
+
         .tools-network { padding: 20px 15px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 20px; }
         .tools-network h2 { margin: 0 0 15px 0; color: var(--text-muted); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; font-weight: normal; }
         .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .tool-link-btn { padding: 12px 5px; border: 1px solid var(--accent-green); color: var(--accent-green); text-decoration: none; border-radius: 8px; font-size: 12px; font-weight: 900; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
-        footer { border-top: 1px solid var(--border-color); padding: 25px 15px; text-align: center; font-size: 13px; color: var(--text-muted); display: block !important; }
-        .footer-info-block { border: 2px solid var(--border-glow); border-radius: 12px; padding: 18px; margin-bottom: 15px; background: rgba(255, 255, 255, 0.05); text-align: left; visibility: visible !important; }
+        .tool-link-btn:last-child:nth-child(odd) { grid-column: 1 / span 2; justify-self: center; width: calc(50% - 5px); }
+
+        footer { border-top: 1px solid var(--border-color); padding: 25px 15px; text-align: center; font-size: 13px; color: var(--text-muted); }
+        .footer-info-block { border: 2px solid var(--border-glow); border-radius: 12px; padding: 18px; margin-bottom: 15px; background: rgba(255, 255, 255, 0.05); text-align: left; }
         .footer-link { color: var(--accent-green); text-decoration: underline; cursor: pointer; padding: 0 8px; font-weight: 900; }
+        
         .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; }
         .modal-content { background: var(--card-bg); margin: 5% auto; padding: 25px; width: 90%; max-width: 600px; border-radius: 12px; position: relative; border: 2px solid var(--border-glow); color: white; line-height: 1.6; }
         .close-btn { position: absolute; right: 10px; top: 0; font-size: 38px; cursor: pointer; padding: 10px; }
@@ -47,7 +56,7 @@
 
 <header class="top-header">
     <h1>SmartDiscount.io</h1>
-    <select class="lang-switcher" onchange="changeLang(this.value)" id="langSelect">
+    <select class="lang-switcher" onchange="changeLang(this.value)" id="langSelect" aria-label="Select Language">
         <option value="en">English</option>
         <option value="uk">Українська</option>
         <option value="es">Español</option>
@@ -59,12 +68,12 @@
     <div class="ad-space">ADVERTISEMENT AREA</div>
     
     <div class="converter-box">
-        <div class="row"><label id="lbl-price">Original Price:</label><input type="number" id="price" class="input-field" value="100" oninput="calculate()"></div>
-        <div class="row"><label id="lbl-discount">Discount %:</label><input type="number" id="discount" class="input-field" value="20" oninput="calculate()"></div>
+        <div class="row"><label id="lbl-price" for="price">Original Price:</label><input type="number" id="price" class="input-field" value="100" oninput="calculate()" aria-label="Original price"></div>
+        <div class="row"><label id="lbl-discount" for="discount">Discount %:</label><input type="number" id="discount" class="input-field" value="20" oninput="calculate()" aria-label="Discount percentage"></div>
         
         <div style="margin-top:25px; border-top: 1px solid var(--border-color); padding-top: 20px;">
-            <div class="row"><label id="lbl-final">Final Price:</label><input type="text" id="finalPrice" class="input-field result-field" readonly></div>
-            <div class="row"><label id="lbl-save">You Save:</label><input type="text" id="saveAmount" class="input-field save-field" readonly></div>
+            <div class="row"><label id="lbl-final">Final Price:</label><input type="text" id="finalPrice" class="input-field result-field" readonly aria-label="Final price result"></div>
+            <div class="row"><label id="lbl-save">You Save:</label><input type="text" id="saveAmount" class="input-field save-field" readonly aria-label="Savings result"></div>
         </div>
     </div>
 
@@ -105,21 +114,62 @@
 </div>
 
 <script>
+    // ТУТ ВАША ОРИГІНАЛЬНА ЛОГІКА ТРАНСЛЕЙТУ, ЯКУ Я ВІДНОВИВ
     const translations = {
         uk: {
             price: "Початкова ціна:", discount: "Знижка %:", final: "Ціна зі знижкою:", save: "Ви економите:",
             other: "Інші професійні інструменти", privacy: "Конфіденційність", terms: "Умови",
             unit: "Конвертер", cur: "Курси валют", perc: "Відсотки", vat: "ПДВ", loan: "Кредити", tip: "Чайові", bmi: "Індекс маси",
-            footer: "SmartDiscount.io — це спеціалізований інструмент для спрощення ваших покупок. Наш калькулятор забезпечує миттєву точність. Конфіденційність понад усе: всі розрахунки виконуються локально.",
-            seo: "<h2>Керуйте бюджетом розумно</h2><p>Наш калькулятор знижок — ідеальний помічник для вигідного шопінгу.</p>"
+            footer: "SmartDiscount.io — це спеціалізований інструмент, створений для спрощення ваших покупок. Незалежно від того, чи рахуєте ви пропозиції Чорної п’ятниці, чи сезонні розпродажі, наш калькулятор забезпечує миттєву точність розрахунків.",
+            seo: `<h2>Керуйте своїм бюджетом розумно</h2><p>Наш <strong>калькулятор знижок</strong> — ідеальний помічник для вигідного шопінгу. Він допоможе точно визначити суму до сплати та розмір вашої вигоди. Забудьте про складні розрахунки в голові біля каси.</p><h2>Як це працює?</h2><p>Введіть початкову ціну товару та відсоток знижки. Система миттєво покаже фінальну вартість та суму економії з точністю до копійок.</p>`
         },
         es: {
             price: "Precio Original:", discount: "Descuento %:", final: "Precio Final:", save: "Tu Ahorro:",
             other: "Otras herramientas", privacy: "Privacidad", terms: "Términos",
-            footer: "SmartDiscount.io es una herramienta diseñada para simplificar sus compras. Nuestra calculadora ofrece precisión instantánea.",
-            seo: "<h2>Optimiza tus Compras</h2><p>Nuestra calculadora de descuentos es el aliado perfecto.</p>"
+            unit: "Convertidor", cur: "Moneda", perc: "Porcentajes", vat: "IVA", loan: "Préstamos", tip: "Propina", bmi: "IMC",
+            footer: "SmartDiscount.io es una herramienta especializada diseñada para simplificar sus compras. Ya sea calculando ofertas del Black Friday o rebajas de temporada, nuestra calculadora ofrece precisión instantánea en cualquier dispositivo.",
+            seo: `<h2>Optimiza tus Compras</h2><p>Nuestra <strong>calculadora de descuentos</strong> es el aliado perfecto para los compradores inteligentes. Te ayuda a saber exactamente cuánto pagarás y cuánto ahorrarás sin errores manuales.</p>`
+        },
+        de: {
+            price: "Originalpreis:", discount: "Rabatt %:", final: "Endpreis:", save: "Ersparnis:",
+            other: "Andere Elite-Tools", privacy: "Datenschutz", terms: "AGB",
+            unit: "Einheiten", cur: "Währung", perc: "Prozentrechner", vat: "MwSt", loan: "Kreditrechner", tip: "Trinkgeld", bmi: "BMI Rechner",
+            footer: "SmartDiscount.io ist ein spezialisiertes Tool, das entwickelt wurde, um Ihr Einkaufserlebnis zu vereinfachen. Berechnen Sie Black-Friday-Angebote oder saisonale Rabatte sofort und präzise mit unserem Tool.",
+            seo: `<h2>Shoppen Sie mit System</h2><p>Unser <strong>Rabattrechner</strong> ist der ideale Begleiter für preisbewusste Käufer. Erfahren Sie sofort, wie viel Sie sparen und was der tatsächliche Endpreis an der Kasse sein wird.</p>`
         }
     };
+
+    let curLang = localStorage.getItem('langDisc') || 'en';
+
+    function changeLang(lang) {
+        curLang = lang;
+        localStorage.setItem('langDisc', lang);
+        if (lang === 'en') { location.reload(); } else { updateUI(); }
+    }
+
+    function updateUI() {
+        const t = translations[curLang];
+        if (!t) return;
+        document.getElementById('langSelect').value = curLang;
+        document.getElementById('lbl-price').innerText = t.price;
+        document.getElementById('lbl-discount').innerText = t.discount;
+        document.getElementById('lbl-final').innerText = t.final;
+        document.getElementById('lbl-save').innerText = t.save;
+        document.getElementById('txt-other-tools').innerText = t.other;
+        document.getElementById('footer-full-text').innerText = t.footer;
+        document.getElementById('link-privacy').innerText = t.privacy;
+        document.getElementById('link-terms').innerText = t.terms;
+        document.getElementById('seo-box').innerHTML = t.seo;
+        
+        document.getElementById('lnk-unit').innerText = t.unit;
+        document.getElementById('lnk-cur').innerText = t.cur;
+        document.getElementById('lnk-perc').innerText = t.perc;
+        document.getElementById('lnk-vat').innerText = t.vat;
+        document.getElementById('lnk-loan').innerText = t.loan;
+        document.getElementById('lnk-tip').innerText = t.tip;
+        document.getElementById('lnk-bmi').innerText = t.bmi;
+        calculate();
+    }
 
     function calculate() {
         const p = parseFloat(document.getElementById('price').value) || 0;
@@ -130,41 +180,12 @@
         document.getElementById('saveAmount').value = s.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 
-    function changeLang(lang) {
-        localStorage.setItem('langDisc', lang);
-        if (lang === 'en') {
-            location.reload();
-        } else {
-            updateUI(lang);
-        }
-    }
-
-    function updateUI(lang) {
-        const t = translations[lang];
-        if (!t) return;
-        document.getElementById('lbl-price').innerText = t.price;
-        document.getElementById('lbl-discount').innerText = t.discount;
-        document.getElementById('lbl-final').innerText = t.final;
-        document.getElementById('lbl-save').innerText = t.save;
-        document.getElementById('txt-other-tools').innerText = t.other;
-        document.getElementById('footer-full-text').innerText = t.footer;
-        document.getElementById('link-privacy').innerText = t.privacy;
-        document.getElementById('link-terms').innerText = t.terms;
-        document.getElementById('seo-box').innerHTML = t.seo;
-        calculate();
-    }
-
     window.onload = function() {
         calculate();
-        const savedLang = localStorage.getItem('langDisc');
-        // ТУТ ЗМІНА: якщо мова англійська, МИ НЕ ВИКЛИКАЄМО updateUI, щоб не затирати HTML текст
-        if (savedLang && savedLang !== 'en') {
-            document.getElementById('langSelect').value = savedLang;
-            updateUI(savedLang);
-        }
+        if (curLang !== 'en') updateUI();
     };
 
-    function openPol(type) { /* модалка */ }
+    function openPol(type) { /* ваша логіка */ }
     function closeModal() { document.getElementById('siteModal').style.display = 'none'; }
 </script>
 </body>
