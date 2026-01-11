@@ -56,7 +56,7 @@
 
 <header class="top-header">
     <h1>SmartDiscount.io</h1>
-    <select class="lang-switcher" onchange="changeLang(this.value)" id="langSelect">
+    <select class="lang-switcher" onchange="changeLang(this.value)" id="langSelect" aria-label="Select Language">
         <option value="en">English</option>
         <option value="uk">Українська</option>
         <option value="es">Español</option>
@@ -68,12 +68,12 @@
     <div class="ad-space">ADVERTISEMENT AREA</div>
     
     <div class="converter-box">
-        <div class="row"><label id="lbl-price">Original Price:</label><input type="number" id="price" class="input-field" value="100" oninput="calculate()"></div>
-        <div class="row"><label id="lbl-discount">Discount %:</label><input type="number" id="discount" class="input-field" value="20" oninput="calculate()"></div>
+        <div class="row"><label id="lbl-price" for="price">Original Price:</label><input type="number" id="price" class="input-field" value="100" oninput="calculate()" aria-label="Original price"></div>
+        <div class="row"><label id="lbl-discount" for="discount">Discount %:</label><input type="number" id="discount" class="input-field" value="20" oninput="calculate()" aria-label="Discount percentage"></div>
         
         <div style="margin-top:25px; border-top: 1px solid var(--border-color); padding-top: 20px;">
-            <div class="row"><label id="lbl-final">Final Price:</label><input type="text" id="finalPrice" class="input-field result-field" readonly></div>
-            <div class="row"><label id="lbl-save">You Save:</label><input type="text" id="saveAmount" class="input-field save-field" readonly></div>
+            <div class="row"><label id="lbl-final">Final Price:</label><input type="text" id="finalPrice" class="input-field result-field" readonly aria-label="Final price result"></div>
+            <div class="row"><label id="lbl-save">You Save:</label><input type="text" id="saveAmount" class="input-field save-field" readonly aria-label="Savings result"></div>
         </div>
     </div>
 
@@ -81,7 +81,7 @@
         <h2>Master Your Shopping Budget</h2>
         <p>Our <strong>Discount Calculator</strong> is the perfect companion for smart shoppers. It helps you determine exactly how much you will pay and how much you will save during sales. No more mental math while standing in line.</p>
         <h2>How It Works</h2>
-        <p>Simply enter the original sticker price and the discount percentage. Our tool instantly calculates the markdown and the final price, including precise decimals for professional use. It's the perfect companion for Black Friday, Cyber Monday, and end-of-season warehouse sales.</p>
+        <p>Simply enter the original sticker price and the discount percentage. Our tool instantly calculates the markdown and the final price, including precise decimals for professional use.</p>
     </section>
 
     <section class="tools-network">
@@ -100,12 +100,12 @@
 
 <footer>
     <div class="footer-info-block" id="footer-full-text">
-        SmartDiscount.io is a specialized digital tool designed to simplify your shopping and financial decisions. Whether you are navigating Black Friday deals, seasonal clearance sales, or business markdowns, our calculator provides instant, mathematical accuracy. We prioritize your user experience by offering a clean, ad-optimized interface that works perfectly on all mobile and desktop devices. Privacy is at our core: all calculations are performed locally in your browser, meaning your financial data never touches a server.
+        SmartDiscount.io is a specialized tool designed to simplify your shopping experience. Whether you are calculating Black Friday deals or seasonal clearance sales, our calculator provides instant accuracy. We focus on speed and privacy, ensuring no data ever leaves your device.
     </div>
     <p>© 2026 SmartDiscount.io - Professional Shopping Tools</p>
     <div style="margin-top:10px;">
         <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy Policy</span>
-        <span class="footer-link" onclick="openPol('terms')" id="id-terms">Terms of Use</span>
+        <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms of Use</span>
     </div>
 </footer>
 
@@ -115,26 +115,75 @@
 
 <script>
     const translations = {
+        en: {
+            price: "Original Price:", discount: "Discount %:", final: "Final Price:", save: "You Save:",
+            other: "Elite Network Tools", privacy: "Privacy Policy", terms: "Terms of Use",
+            unit: "Unit Converter", cur: "Currency Converter", perc: "Percentage Calc", vat: "VAT Calculator", loan: "Loan Calculator", tip: "Tip Calculator", bmi: "BMI Calculator",
+            footer: "SmartDiscount.io is a specialized tool designed to simplify your shopping experience. Whether you are calculating Black Friday deals or seasonal clearance sales, our calculator provides instant accuracy. We focus on speed and privacy, ensuring no data ever leaves your device.",
+            seo: `<h2>Master Your Shopping Budget</h2><p>Our <strong>Discount Calculator</strong> is the perfect companion for smart shoppers. It helps you determine exactly how much you will pay and how much you will save during sales. No more mental math while standing in line.</p><h2>How It Works</h2><p>Simply enter the original sticker price and the discount percentage. Our tool instantly calculates the markdown and the final price, including precise decimals for professional use.</p>`,
+            privText: "<h2>Privacy</h2><p>We do not track your shopping habits. All calculations happen locally on your phone or computer.</p>", 
+            termsText: "<h2>Terms</h2><p>Information provided is for estimation purposes. Final prices at checkout may vary based on store taxes or rounding.</p>"
+        },
         uk: {
             price: "Початкова ціна:", discount: "Знижка %:", final: "Ціна зі знижкою:", save: "Ви економите:",
             other: "Інші професійні інструменти", privacy: "Конфіденційність", terms: "Умови",
-            unit: "Конвертер", cur: "Валюти", perc: "Відсотки", vat: "ПДВ", loan: "Кредити", tip: "Чайові", bmi: "Індекс маси",
-            footer: "SmartDiscount.io — це спеціалізований цифровий інструмент, розроблений для спрощення ваших покупок. Чи то Чорна п'ятниця, чи сезонні розпродажі, наш калькулятор забезпечує миттєву точність. Всі розрахунки конфіденційні та виконуються у вашому браузері.",
-            seo: "<h2>Керуйте бюджетом розумно</h2><p>Наш <strong>калькулятор знижок</strong> — ідеальний помічник для вигідного шопінгу. Він допоможе точно визначити суму до сплати та розмір вашої вигоди.</p><h2>Як це працює?</h2><p>Введіть початкову ціну та відсоток знижки. Система миттєво покаже фінальну вартість та суму економії. Це ідеально для великих розпродажів та акцій.</p>"
+            unit: "Конвертер", cur: "Курси валют", perc: "Відсотки", vat: "ПДВ", loan: "Кредити", tip: "Чайові", bmi: "Індекс маси",
+            footer: "SmartDiscount.io — це спеціалізований інструмент, створений для спрощення ваших покупок. Незалежно від того, чи рахуєте ви пропозиції Чорної п’ятниці, чи сезонні розпродажі, наш калькулятор забезпечує миттєву точність розрахунків.",
+            seo: `<h2>Керуйте своїм бюджетом розумно</h2><p>Наш <strong>калькулятор знижок</strong> — ідеальний помічник для вигідного шопінгу. Він допоможе точно визначити суму до сплати та розмір вашої вигоди. Забудьте про складні розрахунки в голові біля каси.</p><h2>Як це працює?</h2><p>Введіть початкову ціну товару та відсоток знижки. Система миттєво покаже фінальну вартість та суму економії з точністю до копійок.</p>`,
+            privText: "<h2>Конфіденційність</h2><p>Ми не відстежуємо ваші покупки. Усі розрахунки відбуваються локально у вашому браузері.</p>", 
+            termsText: "<h2>Умови</h2><p>Інформація надається для ознайомлення. Фінальна ціна в чеку може відрізнятися залежно від правил заокруглення магазину.</p>"
         },
         es: {
             price: "Precio Original:", discount: "Descuento %:", final: "Precio Final:", save: "Tu Ahorro:",
             other: "Otras herramientas", privacy: "Privacidad", terms: "Términos",
-            footer: "SmartDiscount.io es una herramienta digital para simplificar sus compras. Ya sea Black Friday o rebajas de temporada, nuestra calculadora ofrece precisión instantánea. Todos los cálculos se realizan localmente.",
-            seo: "<h2>Domina tu presupuesto</h2><p>Nuestra <strong>calculadora de descuentos</strong> es el aliado perfecto. Te ayuda a saber exactamente cuánto pagarás y cuánto ahorrarás en las rebajas.</p>"
+            unit: "Convertidor", cur: "Moneda", perc: "Porcentajes", vat: "IVA", loan: "Préstamos", tip: "Propina", bmi: "IMC",
+            footer: "SmartDiscount.io es una herramienta especializada diseñada para simplificar sus compras. Ya sea calculando ofertas del Black Friday o rebajas de temporada, nuestra calculadora ofrece precisión instantánea en cualquier dispositivo.",
+            seo: `<h2>Optimiza tus Compras</h2><p>Nuestra <strong>calculadora de descuentos</strong> es el aliado perfecto para los compradores inteligentes. Te ayuda a saber exactamente cuánto pagarás y cuánto ahorrarás sin errores manuales.</p><h2>Fácil de usar</h2><p>Solo ingresa el precio inicial y el porcentaje de descuento. Obtén resultados inmediatos sobre el ahorro total y el precio final de venta en segundos.</p>`,
+            privText: "<h2>Privacidad</h2><p>No almacenamos sus datos. Todos los cálculos se realizan de forma privada en su navegador.</p>", 
+            termsText: "<h2>Términos</h2><p>Uso informativo. Los precios finales pueden variar según impuestos locales o políticas específicas de la tienda.</p>"
         },
         de: {
             price: "Originalpreis:", discount: "Rabatt %:", final: "Endpreis:", save: "Ersparnis:",
             other: "Andere Elite-Tools", privacy: "Datenschutz", terms: "AGB",
-            footer: "SmartDiscount.io ist ein spezialisiertes Tool für Ihre Einkaufsentscheidungen. Ob Black Friday oder Ausverkauf – unser Rechner liefert sofortige Genauigkeit.",
-            seo: "<h2>Shoppen Sie mit System</h2><p>Unser <strong>Rabattrechner</strong> ist der ideale Begleiter für preisbewusste Käufer. Erfahren Sie sofort, wie viel Sie sparen.</p>"
+            unit: "Einheiten", cur: "Währung", perc: "Prozentrechner", vat: "MwSt", loan: "Kreditrechner", tip: "Trinkgeld", bmi: "BMI Rechner",
+            footer: "SmartDiscount.io ist ein spezialisiertes Tool, das entwickelt wurde, um Ihr Einkaufserlebnis zu vereinfachen. Berechnen Sie Black-Friday-Angebote oder saisonale Rabatte sofort und präzise mit unserem Tool.",
+            seo: `<h2>Shoppen Sie mit System</h2><p>Unser <strong>Rabattrechner</strong> ist der ideale Begleiter für preisbewusste Käufer. Erfahren Sie sofort, wie viel Sie sparen und was der tatsächliche Endpreis an der Kasse sein wird.</p><h2>Präзise Berechnungen</h2><p>Geben Sie einfach den Grundpreis und den Rabattsatz ein. Unser Rechner liefert Ihnen die exakte Ersparnis und den reduzierten Preis in Echtzeit.</p>`,
+            privText: "<h2>Datenschutz</h2><p>Ihre Daten bleiben privat. Alle Berechnungen werden lokal auf Ihrem Gerät durchgeführt.</p>", 
+            termsText: "<h2>AGB</h2><p>Die bereitgestellten Informationen dienen der Schätzung. Der tatsächliche Endpreis kann je nach Rundung im Geschäft variieren.</p>"
         }
     };
+
+    let curLang = localStorage.getItem('langDisc') || 'en';
+
+    function changeLang(lang) {
+        curLang = lang;
+        localStorage.setItem('langDisc', lang);
+        updateUI();
+    }
+
+    function updateUI() {
+        const t = translations[curLang] || translations.en;
+        document.getElementById('langSelect').value = curLang;
+        document.getElementById('lbl-price').innerText = t.price;
+        document.getElementById('lbl-discount').innerText = t.discount;
+        document.getElementById('lbl-final').innerText = t.final;
+        document.getElementById('lbl-save').innerText = t.save;
+        document.getElementById('txt-other-tools').innerText = t.other;
+        document.getElementById('footer-full-text').innerText = t.footer;
+        document.getElementById('link-privacy').innerText = t.privacy;
+        document.getElementById('link-terms').innerText = t.terms;
+        document.getElementById('seo-box').innerHTML = t.seo;
+        
+        document.getElementById('lnk-unit').innerText = t.unit;
+        document.getElementById('lnk-cur').innerText = t.cur;
+        document.getElementById('lnk-perc').innerText = t.perc;
+        document.getElementById('lnk-vat').innerText = t.vat;
+        document.getElementById('lnk-loan').innerText = t.loan;
+        document.getElementById('lnk-tip').innerText = t.tip;
+        document.getElementById('lnk-bmi').innerText = t.bmi;
+        
+        calculate();
+    }
 
     function calculate() {
         const p = parseFloat(document.getElementById('price').value) || 0;
@@ -145,42 +194,15 @@
         document.getElementById('saveAmount').value = s.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 
-    function changeLang(lang) {
-        localStorage.setItem('langDisc', lang);
-        if (lang === 'en') { location.reload(); } else { updateUI(lang); }
+    function openPol(type) {
+        const t = translations[curLang] || translations.en;
+        document.getElementById('modalBody').innerHTML = type === 'privacy' ? t.privText : t.termsText;
+        document.getElementById('siteModal').style.display = 'block';
     }
-
-    function updateUI(lang) {
-        const t = translations[lang];
-        if (!t) return;
-        document.getElementById('lbl-price').innerText = t.price;
-        document.getElementById('lbl-discount').innerText = t.discount;
-        document.getElementById('lbl-final').innerText = t.final;
-        document.getElementById('lbl-save').innerText = t.save;
-        document.getElementById('txt-other-tools').innerText = t.other;
-        document.getElementById('footer-full-text').innerText = t.footer;
-        document.getElementById('link-privacy').innerText = t.privacy;
-        document.getElementById('id-terms').innerText = t.terms;
-        document.getElementById('seo-box').innerHTML = t.seo;
-        
-        ['unit', 'cur', 'perc', 'vat', 'loan', 'tip', 'bmi'].forEach(id => {
-            const el = document.getElementById('lnk-' + id);
-            if (el && t[id]) el.innerText = t[id];
-        });
-        calculate();
-    }
-
-    window.onload = function() {
-        calculate();
-        const savedLang = localStorage.getItem('langDisc');
-        if (savedLang && savedLang !== 'en') {
-            document.getElementById('langSelect').value = savedLang;
-            updateUI(savedLang);
-        }
-    };
-
-    function openPol(type) { /* логіка модалок */ }
     function closeModal() { document.getElementById('siteModal').style.display = 'none'; }
+    
+    // Ініціалізація при завантаженні сторінки
+    window.onload = updateUI;
 </script>
 </body>
 </html>
