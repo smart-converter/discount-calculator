@@ -1,153 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="8boxzAKQUKKF8IEuVEX1wX8aUwcdch3Q11BgfGM3vkM" />
-    <title>Smart Discount - Professional Sale & Savings Calculator</title>
+    <title>Smart Discount - Калькулятор знижок</title>
     <style>
-        :root { --bg-dark: #0f172a; --card-bg: #1e293b; --accent-green: #22c55e; --text-light: #f8fafc; --text-muted: #cbd5e1; --border-color: #334155; }
-        body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-light); -webkit-font-smoothing: antialiased; }
-        .top-header { background-color: #166534; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); }
-        .top-header h1 { margin: 0; font-size: 20px; font-weight: 900; }
-        .lang-switcher { background: var(--bg-dark); border: 2px solid white; color: white; padding: 6px 10px; border-radius: 8px; font-size: 14px; cursor: pointer; font-weight: 800; }
-        .container { max-width: 800px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
-        .ad-space { background: rgba(255, 255, 255, 0.05); border: 1px dashed var(--border-color); margin: 10px 0 20px; text-align: center; padding: 20px; color: var(--text-muted); font-size: 11px; border-radius: 8px; }
-        .converter-box { border: 1px solid var(--border-color); padding: 25px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        .row { display: flex; align-items: center; margin-bottom: 15px; flex-wrap: wrap; }
-        .row label { width: 100%; font-size: 15px; color: var(--text-muted); font-weight: 700; margin-bottom: 5px; }
-        @media(min-width: 480px) { .row label { width: 160px; margin-bottom: 0; } }
-        .input-field { flex: 1; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 18px; font-weight: 800; width: 100%; box-sizing: border-box; background: #fff; color: #000; outline: none; }
-        .result-field { background: #f0fdf4 !important; color: #166534 !important; border-color: #22c55e !important; }
-        .save-field { background: #fef2f2 !important; color: #ef4444 !important; border-color: #fca5a5 !important; }
-        .seo-content { padding: 20px 0; line-height: 1.6; font-size: 15px; color: var(--text-muted); margin-top: 20px; border-top: 1px solid var(--border-color); }
-        .seo-content h2 { color: var(--accent-green); font-size: 22px; margin: 10px 0; font-weight: 900; }
-        .tools-network { padding: 30px 0; text-align: center; border-top: 1px solid var(--border-color); }
-        .tools-network h2 { margin-bottom: 20px; color: #fff; font-size: 20px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
-        .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        @media(max-width: 400px) { .tools-grid { grid-template-columns: 1fr; } }
-        .tool-link-btn { padding: 14px 10px; border: 1px solid var(--accent-green); color: var(--accent-green); text-decoration: none; border-radius: 8px; font-size: 13px; font-weight: 900; display: flex; align-items: center; justify-content: center; transition: 0.3s; background: rgba(34, 197, 94, 0.05); }
-        footer { border-top: 1px solid var(--border-color); padding: 30px 15px; text-align: center; }
-        .footer-info-block { border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 20px; background: rgba(255, 255, 255, 0.03); text-align: left; width: 100%; box-sizing: border-box; line-height: 1.6; color: var(--text-muted); }
-        .footer-link { color: var(--accent-green); text-decoration: none; cursor: pointer; padding: 0 15px; font-weight: 900; font-size: 14px; border-bottom: 1px solid transparent; }
-        .footer-link:hover { border-bottom-color: var(--accent-green); }
-        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
-        .modal-content { background: var(--card-bg); margin: 15% auto; padding: 25px; width: 85%; max-width: 500px; border-radius: 12px; position: relative; border: 1px solid var(--border-color); }
-        .close-btn { position: absolute; right: 15px; top: 10px; font-size: 30px; cursor: pointer; color: var(--text-muted); }
+        :root { --bg: #0f172a; --card: #1e293b; --green: #22c55e; --white: #ffffff; --border: #334155; }
+        body { font-family: -apple-system, sans-serif; margin: 0; background: var(--bg); color: var(--white); -webkit-font-smoothing: antialiased; }
+        
+        /* Шапка */
+        .header { background: #166534; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .header h1 { margin: 0; font-size: 20px; font-weight: 900; color: white; }
+        .lang-select { background: var(--bg); color: white; border: 2px solid white; border-radius: 8px; padding: 6px; font-weight: bold; cursor: pointer; }
+
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; box-sizing: border-box; }
+        
+        /* Калькулятор */
+        .calc-box { background: var(--card); padding: 25px; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 10px; font-weight: 700; font-size: 16px; color: var(--white); }
+        input { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid var(--border); font-size: 22px; font-weight: 800; box-sizing: border-box; background: white; color: black; outline: none; }
+        .res { background: #f0fdf4 !important; color: #166534 !important; border: 2px solid var(--green) !important; }
+        .save { background: #fef2f2 !important; color: #ef4444 !important; border: 2px solid #fca5a5 !important; }
+
+        /* СІТКА ІНСТРУМЕНТІВ - ВИПРАВЛЕНО НА 2 КОЛОНКИ */
+        .tools-title { text-align: center; margin: 40px 0 20px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+        .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .tool-btn { padding: 15px 5px; border: 1px solid var(--green); color: var(--green); text-decoration: none; border-radius: 10px; font-weight: 900; font-size: 13px; text-align: center; background: rgba(34, 197, 94, 0.05); display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .tool-btn:active { background: var(--green); color: white; }
+
+        /* Футер */
+        footer { margin-top: 50px; padding: 30px 15px; text-align: center; border-top: 1px solid var(--border); }
+        .footer-text { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; font-size: 14px; line-height: 1.6; margin-bottom: 20px; text-align: left; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-top: 20px; }
+        .footer-links span { color: var(--green); font-weight: 900; text-decoration: underline; cursor: pointer; }
+
+        /* Модалка */
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); }
+        .modal-content { background: var(--card); margin: 20% auto; padding: 25px; width: 85%; border-radius: 15px; border: 1px solid var(--border); color: white; position: relative; }
+        .close { position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<header class="top-header">
+<header class="header">
     <h1>SmartDiscount.io</h1>
-    <select class="lang-switcher" onchange="changeLang(this.value)" id="langSelect">
-        <option value="en">English</option>
-        <option value="uk">Українська</option>
-        <option value="es">Español</option>
-        <option value="de">Deutsch</option>
-    </select>
+    <div>
+        <label for="lang" style="display:none;">Оберіть мову</label>
+        <select id="lang" class="lang-select" onchange="changeLang(this.value)">
+            <option value="uk">UA</option>
+            <option value="en">EN</option>
+        </select>
+    </div>
 </header>
 
 <main class="container">
-    <div class="ad-space">ADVERTISEMENT</div>
-    <div class="converter-box">
-        <div class="row"><label id="lbl-price">Original Price:</label><input type="number" id="price" class="input-field" value="100" oninput="calculate()"></div>
-        <div class="row"><label id="lbl-discount">Discount %:</label><input type="number" id="discount" class="input-field" value="20" oninput="calculate()"></div>
-        <div style="margin-top:20px; border-top: 1px solid var(--border-color); padding-top: 20px;">
-            <div class="row"><label id="lbl-final">Final Price:</label><input type="text" id="finalPrice" class="input-field result-field" readonly></div>
-            <div class="row"><label id="lbl-save">You Save:</label><input type="text" id="saveAmount" class="input-field save-field" readonly></div>
+    <div class="calc-box">
+        <div class="input-group">
+            <label for="price" id="t-price">Початкова ціна:</label>
+            <input type="number" id="price" value="100" oninput="calculate()">
+        </div>
+        <div class="input-group">
+            <label for="disc" id="t-disc">Знижка %:</label>
+            <input type="number" id="disc" value="20" oninput="calculate()">
+        </div>
+        <div style="border-top: 1px solid var(--border); margin: 25px 0; padding-top: 20px;">
+            <div class="input-group">
+                <label for="res-final" id="t-final">Ціна зі знижкою:</label>
+                <input type="text" id="res-final" class="res" readonly>
+            </div>
+            <div class="input-group">
+                <label for="res-save" id="t-save">Ви економите:</label>
+                <input type="text" id="res-save" class="save" readonly>
+            </div>
         </div>
     </div>
 
-    <section class="seo-content" id="seo-box"></section>
-
-    <section class="tools-network">
-        <h2 id="txt-other-tools">Elite Network Tools</h2>
-        <div class="tools-grid">
-            <a href="https://smart-converter.github.io/unit-converter/" class="tool-link-btn">Unit Converter</a>
-            <a href="https://smart-converter.github.io/currency-converter/" class="tool-link-btn">Currency Converter</a>
-            <a href="https://smart-converter.github.io/percentage-calculator/" class="tool-link-btn">Percentage Calc</a>
-            <a href="https://smart-converter.github.io/vat-calculator/" class="tool-link-btn">VAT Calculator</a>
-            <a href="https://smart-converter.github.io/loan-calculator/" class="tool-link-btn">Loan Calculator</a>
-            <a href="https://smart-converter.github.io/tip-calculator/" class="tool-link-btn">Tip Calculator</a>
-            <a href="https://smart-converter.github.io/bmi-calculator/" class="tool-link-btn">BMI Calculator</a>
-        </div>
-    </section>
+    <h2 class="tools-title" id="t-tools">Інші інструменти</h2>
+    <div class="tools-grid">
+        <a href="https://smart-converter.github.io/unit-converter/" class="tool-btn">Unit Converter</a>
+        <a href="https://smart-converter.github.io/currency-converter/" class="tool-btn">Currency Converter</a>
+        <a href="https://smart-converter.github.io/percentage-calculator/" class="tool-btn">Percentage Calc</a>
+        <a href="https://smart-converter.github.io/vat-calculator/" class="tool-btn">VAT Calculator</a>
+        <a href="https://smart-converter.github.io/loan-calculator/" class="tool-btn">Loan Calculator</a>
+        <a href="https://smart-converter.github.io/tip-calculator/" class="tool-btn">Tip Calculator</a>
+        <a href="https://smart-converter.github.io/bmi-calculator/" class="tool-btn">BMI Calculator</a>
+    </div>
 </main>
 
 <footer>
-    <div class="container">
-        <div class="footer-info-block" id="footer-full-text"></div>
-        <p style="font-size: 12px; margin-bottom: 15px;">© 2026 SmartDiscount.io - Professional Shopping Tools</p>
-        <div>
-            <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy Policy</span>
-            <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms of Use</span>
-        </div>
+    <div class="footer-text" id="t-info"></div>
+    <p style="font-weight: bold;">© 2026 SmartDiscount.io</p>
+    <div class="footer-links">
+        <span onclick="showMod('p')" id="t-priv">Конфіденційність</span>
+        <span onclick="showMod('t')" id="t-terms">Умови</span>
     </div>
 </footer>
 
-<div id="siteModal" class="modal" onclick="if(event.target == this) closeModal()">
-    <div class="modal-content"><span class="close-btn" onclick="closeModal()">×</span><div id="modalBody" style="color:#fff; line-height:1.6;"></div></div>
+<div id="modal" class="modal" onclick="closeMod()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="close" onclick="closeMod()">&times;</span>
+        <div id="modal-body"></div>
+    </div>
 </div>
 
 <script>
-    const translations = {
-        en: {
-            price: "Original Price:", discount: "Discount %:", final: "Final Price:", save: "You Save:",
-            other: "Elite Network Tools", privacy: "Privacy Policy", terms: "Terms of Use",
-            footer: "SmartDiscount.io is a specialized digital tool designed to simplify your shopping and financial decisions. Whether you are navigating Black Friday deals or business markdowns, our calculator provides instant mathematical accuracy. All calculations are performed locally in your browser.",
-            seo: "<h2>Master Your Shopping Budget</h2><p>Calculate discounts and savings instantly with precision. Our tool helps you understand the real value of sale prices in seconds.</p>",
-            privText: "<h2>Privacy Policy</h2><p>We value your privacy. This tool operates entirely in your client-side browser. No personal data is collected, stored, or transmitted to any servers.</p>",
-            termsText: "<h2>Terms of Use</h2><p>The results provided by this calculator are for informational purposes only. While we strive for 100% accuracy, always verify final prices with the retailer before purchase.</p>"
-        },
+    const langData = {
         uk: {
-            price: "Початкова ціна:", discount: "Знижка %:", final: "Ціна зі знижкою:", save: "Ви економите:",
-            other: "Інші інструменти", privacy: "Конфіденційність", terms: "Умови",
-            footer: "SmartDiscount.io — це спеціалізований цифровий інструмент, розроблений для спрощення ваших покупок. Незалежно від того, чи це розпродажі до Чорної п'ятниці, чи бізнес-розрахунки, наш калькулятор забезпечує миттєву точність. Усі розрахунки виконуються локально у вашому браузері.",
-            seo: "<h2>Керуйте бюджетом</h2><p>Розраховуйте знижки та вигоду миттєво з високою точністю. Наш інструмент допоможе вам зрозуміти реальну вартість товарів за лічені секунди.</p>",
-            privText: "<h2>Конфіденційність</h2><p>Ми цінуємо вашу приватність. Розрахунки проводяться локально. Ми не збираємо та не зберігаємо ваші дані.</p>",
-            termsText: "<h2>Умови використання</h2><p>Результати мають ознайомчий характер. Завжди перевіряйте остаточну ціну безпосередньо в магазині перед покупкою.</p>"
+            price: "Початкова ціна:", disc: "Знижка %:", final: "Ціна зі знижкою:", save: "Ви економите:", tools: "Інші інструменти",
+            priv: "Конфіденційність", terms: "Умови", info: "SmartDiscount.io — це професійний інструмент для швидких розрахунків під час покупок. Всі обчислення відбуваються лише у вашому браузері.",
+            pText: "<h2>Приватність</h2><p>Ми не збираємо ваші дані. Все працює локально.</p>",
+            tText: "<h2>Умови</h2><p>Результати носять ознайомчий характер.</p>"
+        },
+        en: {
+            price: "Original Price:", disc: "Discount %:", final: "Final Price:", save: "You Save:", tools: "Elite Network Tools",
+            priv: "Privacy", terms: "Terms", info: "Professional digital tool designed to simplify your shopping decisions. All calculations are performed locally.",
+            pText: "<h2>Privacy</h2><p>No data collection. Everything is local.</p>",
+            tText: "<h2>Terms</h2><p>For informational purposes only.</p>"
         }
     };
 
-    let curLang = localStorage.getItem('langDisc') || 'en';
+    let currentLang = 'uk';
 
     function calculate() {
         const p = parseFloat(document.getElementById('price').value) || 0;
-        const d = parseFloat(document.getElementById('discount').value) || 0;
+        const d = parseFloat(document.getElementById('disc').value) || 0;
         const s = (p * d) / 100;
-        const f = p - s;
-        document.getElementById('finalPrice').value = f.toLocaleString(undefined, {minimumFractionDigits: 2});
-        document.getElementById('saveAmount').value = s.toLocaleString(undefined, {minimumFractionDigits: 2});
+        document.getElementById('res-final').value = (p - s).toFixed(2);
+        document.getElementById('res-save').value = s.toFixed(2);
     }
 
-    function changeLang(lang) {
-        curLang = lang;
-        localStorage.setItem('langDisc', lang);
+    function changeLang(l) {
+        currentLang = l;
         updateUI();
     }
 
     function updateUI() {
-        const t = translations[curLang] || translations.en;
-        document.getElementById('langSelect').value = curLang;
-        document.getElementById('lbl-price').innerText = t.price;
-        document.getElementById('lbl-discount').innerText = t.discount;
-        document.getElementById('lbl-final').innerText = t.final;
-        document.getElementById('lbl-save').innerText = t.save;
-        document.getElementById('txt-other-tools').innerText = t.other;
-        document.getElementById('footer-full-text').innerText = t.footer;
-        document.getElementById('link-privacy').innerText = t.privacy;
-        document.getElementById('link-terms').innerText = t.terms;
-        document.getElementById('seo-box').innerHTML = t.seo;
+        const d = langData[currentLang];
+        document.getElementById('t-price').innerText = d.price;
+        document.getElementById('t-disc').innerText = d.disc;
+        document.getElementById('t-final').innerText = d.final;
+        document.getElementById('t-save').innerText = d.save;
+        document.getElementById('t-tools').innerText = d.tools;
+        document.getElementById('t-info').innerText = d.info;
+        document.getElementById('t-priv').innerText = d.priv;
+        document.getElementById('t-terms').innerText = d.terms;
         calculate();
     }
 
-    function openPol(type) {
-        const t = translations[curLang] || translations.en;
-        document.getElementById('modalBody').innerHTML = type === 'privacy' ? t.privText : t.termsText;
-        document.getElementById('siteModal').style.display = 'block';
+    function showMod(type) {
+        document.getElementById('modal-body').innerHTML = type === 'p' ? langData[currentLang].pText : langData[currentLang].tText;
+        document.getElementById('modal').style.display = 'block';
     }
-    function closeModal() { document.getElementById('siteModal').style.display = 'none'; }
+    function closeMod() { document.getElementById('modal').style.display = 'none'; }
 
     window.onload = updateUI;
 </script>
