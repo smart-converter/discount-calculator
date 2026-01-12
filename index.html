@@ -72,9 +72,7 @@
 
     <section class="seo-content" id="seo-box">
         <h2>Master Your Shopping Budget</h2>
-        <p>Our <strong>Discount Calculator</strong> is the perfect companion for smart shoppers. It helps you determine exactly how much you will pay and how much you will save during sales. No more mental math while standing in line.</p>
-        <h2>How It Works</h2>
-        <p>Simply enter the original sticker price and the discount percentage. Our tool instantly calculates the markdown and the final price, including precise decimals for professional use.</p>
+        <p>Our <strong>Discount Calculator</strong> is the perfect companion for smart shoppers. It helps you determine exactly how much you will pay and how much you will save during sales.</p>
     </section>
 
     <section class="tools-network">
@@ -92,12 +90,14 @@
 </main>
 
 <footer>
-<div class="policy-links">
-    <a href="https://smart-converter.github.io/discount-calculator/privacy-policy.html" id="link-privacy">Privacy Policy</a>
-    <a href="https://smart-converter.github.io/discount-calculator/terms-of-use.html" id="link-terms">Terms of Use</a>
-</div>
-
-
+    <div class="footer-info-block" id="footer-full-text">
+        SmartDiscount.io is a specialized digital tool designed to simplify your shopping and financial decisions. All calculations are performed locally in your browser.
+    </div>
+    <p>© 2026 SmartDiscount.io - Professional Shopping Tools</p>
+    <div class="policy-links">
+        <a href="https://smart-converter.github.io/discount-calculator/privacy-policy.html" id="link-privacy">Privacy Policy</a>
+        <a href="https://smart-converter.github.io/discount-calculator/terms-of-use.html" id="link-terms">Terms of Use</a>
+    </div>
 </footer>
 
 <script>
@@ -124,7 +124,7 @@
             price: "Originalpreis:", discount: "Rabatt %:", final: "Endpreis:", save: "Sie sparen:",
             other: "Andere Werkzeuge", privacy: "Datenschutz", terms: "AGB",
             footer: "SmartDiscount.io ist ein spezialisiertes digitales Tool, das Ihre Einkaufsentscheidungen vereinfacht. Unser Rechner bietet sofortige mathematische Genauigkeit.",
-            seo: "<h2>Meistern Sie Ihr Budget</h2><p>Unser Rabattrechner hilft Ihnen, genau zu bestimmen, wie viel Sie sparen.</p>"
+            seo: "<h2>Meistern Sie Ihr Budget</h2><p>Unser Rabattrechner допоможе Ihnen, genau zu bestimmen, wie viel Sie sparen.</p>"
         }
     };
 
@@ -144,13 +144,16 @@
 
     function updateUI(lang) {
         const t = translations[lang] || translations.en;
+        const footerEl = document.getElementById('footer-full-text');
+        const seoEl = document.getElementById('seo-box');
+        
         document.getElementById('lbl-price').innerText = t.price;
         document.getElementById('lbl-discount').innerText = t.discount;
         document.getElementById('lbl-final').innerText = t.final;
         document.getElementById('lbl-save').innerText = t.save;
         document.getElementById('txt-other-tools').innerText = t.other;
-        document.getElementById('footer-full-text').innerText = t.footer;
-        document.getElementById('seo-box').innerHTML = t.seo;
+        if(footerEl) footerEl.innerText = t.footer;
+        if(seoEl) seoEl.innerHTML = t.seo;
         document.getElementById('link-privacy').innerText = t.privacy;
         document.getElementById('link-terms').innerText = t.terms;
         calculate();
