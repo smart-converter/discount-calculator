@@ -3,46 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional discount calculator. Calculate final price and savings instantly.">
     <meta name="google-site-verification" content="8boxzAKQUKKF8IEuVEX1wX8aUwcdch3Q11BgfGM3vkM" />
-    <title>Smart Discount - Professional Sale & Savings Calculator</title>
+    <title>Smart Discount - Professional Calculator</title>
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --green: #22c55e; --white: #ffffff; --border: #334155; --text: #cbd5e1; }
-        body { font-family: -apple-system, sans-serif; margin: 0; background: var(--bg); color: var(--white); }
-        .header { background: #166534; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        body { font-family: -apple-system, sans-serif; margin: 0; background: var(--bg); color: var(--white); -webkit-font-smoothing: antialiased; }
+        .header { background: #166534; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
         .lang-select { background: #0f172a; color: white; border: 1px solid white; border-radius: 4px; padding: 5px; font-weight: bold; font-size: 13px; }
         .container { max-width: 420px; margin: 0 auto; padding: 10px; }
         
-        .ads-box { width: 100%; min-height: 90px; background: rgba(255,255,255,0.03); margin: 15px 0; border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--text); }
+        .ad-box { width: 100%; min-height: 90px; background: rgba(255,255,255,0.02); margin: 15px 0; border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--text); }
 
-        /* КОМПАКТНИЙ СТИЛЬ (ТВІЙ СТАНДАРТ) */
-        .card { background: var(--card); padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
-        .row { margin-bottom: 12px; }
+        /* ТВОЯ ЦІЛІСНА КАРТКА */
+        .card { background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .row { margin-bottom: 15px; }
         label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; color: var(--text); }
-        input { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #475569; font-size: 17px; font-weight: 700; box-sizing: border-box; outline: none; }
-        .res { background: #f0fdf4 !important; color: #166534 !important; border: 2px solid var(--green) !important; }
+        input { width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #475569; font-size: 18px; font-weight: 700; box-sizing: border-box; background: #fff; color: #000; outline: none; }
+        
+        .res-f { background: #f0fdf4 !important; color: #166534 !important; border: 2px solid var(--green) !important; }
+        .res-s { background: #fef2f2 !important; color: #991b1b !important; border: 2px solid #ef4444 !important; }
 
         /* СІТКА 2x2 ТА 7 ПОСИЛАНЬ */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
-        .btn { padding: 12px 5px; border: 1px solid var(--green); color: var(--green); text-decoration: none; border-radius: 5px; text-align: center; font-weight: bold; font-size: 12px; background: rgba(34, 197, 94, 0.05); display: flex; align-items: center; justify-content: center; min-height: 45px; }
-        .btn:last-child { grid-column: span 2; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; }
+        .btn { padding: 14px 5px; border: 1.5px solid var(--green); color: var(--green); text-decoration: none; border-radius: 8px; text-align: center; font-weight: bold; font-size: 12px; background: rgba(34, 197, 94, 0.05); display: flex; align-items: center; justify-content: center; min-height: 48px; }
+        .btn-full { grid-column: span 2; }
 
-        /* ПОВНИЙ SEO-БЛОК */
-        .seo { margin-top: 30px; padding: 10px; font-size: 14px; line-height: 1.6; color: var(--text); border-top: 1px solid var(--border); }
-        .seo h2 { color: var(--green); font-size: 18px; margin: 20px 0 10px; }
+        /* SEO ТЕКСТ (ПОВЕРНУТО ВСЕ) */
+        .seo-section { margin-top: 30px; padding: 10px; font-size: 14px; line-height: 1.7; color: var(--text); border-top: 1px solid var(--border); }
+        .seo-section h2 { color: var(--green); font-size: 20px; margin: 20px 0 10px; }
 
-        footer { margin-top: 20px; padding: 25px; text-align: center; border-top: 1px solid var(--border); }
-        .f-box { background: rgba(255, 255, 255, 0.02); padding: 15px; border-radius: 8px; text-align: left; font-size: 13px; color: #94a3b8; line-height: 1.5; }
-        .f-link { color: var(--green); text-decoration: underline; cursor: pointer; margin: 0 10px; font-weight: bold; }
+        footer { margin-top: 30px; padding: 25px; text-align: center; border-top: 1px solid var(--border); }
+        .f-box { background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 10px; text-align: left; font-size: 13px; color: #94a3b8; border: 1px solid var(--border); line-height: 1.6; }
+        .f-link { color: var(--green); text-decoration: underline; cursor: pointer; margin: 0 12px; font-weight: bold; font-size: 14px; display: inline-block; }
         
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; }
-        .modal-c { background: var(--card); margin: 20% auto; padding: 20px; width: 85%; max-width: 380px; border-radius: 12px; border: 1px solid var(--border); position: relative; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; }
+        .modal-c { background: var(--card); margin: 20% auto; padding: 25px; width: 85%; max-width: 400px; border-radius: 12px; border: 1px solid var(--border); position: relative; }
     </style>
 </head>
 <body>
 
 <header class="header">
-    <h1 style="font-size:18px; margin:0;">SmartDiscount.io</h1>
-    <select id="lang" class="lang-select" onchange="changeLang(this.value)">
+    <div style="font-size:20px; font-weight:900;">SmartDiscount.io</div>
+    <select id="l-sel" class="lang-select" onchange="upd(this.value)" aria-label="Select Language">
         <option value="en">English</option>
         <option value="uk">Українська</option>
         <option value="es">Español</option>
@@ -51,14 +54,25 @@
 </header>
 
 <main class="container">
-    <div class="ads-box">ADVERTISEMENT</div>
+    <div class="ad-box">Advertisement Space (Top)</div>
 
     <div class="card">
-        <div class="row"><label id="l1">Original Price:</label><input type="number" id="p" value="100" oninput="calc()"></div>
-        <div class="row"><label id="l2">Discount %:</label><input type="number" id="d" value="20" oninput="calc()"></div>
-        <div class="row" style="margin-top:15px; border-top:1px solid var(--border); padding-top:10px;">
-            <label id="l3">Final Price:</label>
-            <input type="text" id="f" class="res" readonly>
+        <div class="row">
+            <label id="lb1" for="p">Original Price:</label>
+            <input type="number" id="p" value="100" oninput="clc()">
+        </div>
+        <div class="row">
+            <label id="lb2" for="d">Discount %:</label>
+            <input type="number" id="d" value="20" oninput="clc()">
+        </div>
+        <div style="margin: 20px 0; border-top: 1px solid var(--border);"></div>
+        <div class="row">
+            <label id="lb3" for="rf">Final Price:</label>
+            <input type="text" id="rf" class="res-f" readonly>
+        </div>
+        <div class="row">
+            <label id="lb4" for="rs">You Save:</label>
+            <input type="text" id="rs" class="res-s" readonly>
         </div>
     </div>
 
@@ -69,79 +83,66 @@
         <a href="https://smart-converter.github.io/vat-calculator/" class="btn">VAT Calculator</a>
         <a href="https://smart-converter.github.io/loan-calculator/" class="btn">Loan Calculator</a>
         <a href="https://smart-converter.github.io/tip-calculator/" class="btn">Tip Calculator</a>
-        <a href="https://smart-converter.github.io/bmi-calculator/" class="btn">BMI Calculator</a>
+        <a href="https://smart-converter.github.io/bmi-calculator/" class="btn btn-full">BMI Calculator</a>
     </div>
 
-    <div class="ads-box">ADVERTISEMENT</div>
+    <div class="ad-box">Advertisement Space (Bottom)</div>
 
-    <section class="seo" id="seo-c"></section>
+    <section class="seo-section" id="seo-txt"></section>
 </main>
 
 <footer>
-    <div class="f-box" id="ft"></div>
-    <p style="font-weight:bold; margin:20px 0; font-size:14px;">© 2026 SmartDiscount.io</p>
+    <div class="f-box" id="f-desc"></div>
+    <p style="font-weight:bold; margin:20px 0; font-size:15px; color:white;">© 2026 SmartDiscount.io</p>
     <div>
-        <span class="f-link" onclick="pop('p')" id="m1">Privacy</span>
-        <span class="f-link" onclick="pop('t')" id="m2">Terms</span>
+        <span class="f-link" onclick="pop('p')" id="m1">Privacy Policy</span>
+        <span class="f-link" onclick="pop('t')" id="m2">Terms of Use</span>
     </div>
 </footer>
 
-<div id="md" class="modal" onclick="this.style.display='none'"><div class="modal-c" id="mb"></div></div>
+<div id="modal" class="modal" onclick="this.style.display='none'"><div class="modal-c" id="m-body" onclick="event.stopPropagation()"></div></div>
 
 <script>
-    const tr = {
+    const data = {
         en: { 
-            l1:"Price:", l2:"Discount %:", l3:"Final Price:", m1:"Privacy Policy", m2:"Terms", 
-            seo:"<h2>Maximize Your Savings</h2><p>SmartDiscount.io is built for savvy shoppers who want to see real-time savings. Our professional discount calculator handles complex percentage markdowns instantly. Whether it's a seasonal sale or a business discount, you get the exact final price without any guesswork.</p><h2>Accuracy in Your Pocket</h2><p>Designed for mobile performance, this tool ensures you never overpay at the checkout. It is free, secure, and processes everything locally on your device.</p>",
-            ft:"SmartDiscount.io provides professional financial tools for everyday use. Our goal is to offer accurate, fast, and private calculations. No data is ever collected or stored. Use it freely for your shopping needs.",
-            p:"<h2>Privacy Policy</h2><p>All calculations are performed locally in your browser. We do not collect personal data.</p>", 
-            t:"<h2>Terms of Use</h2><p>Results are for informational purposes only. Verify prices at the store.</p>"
+            l1:"Original Price:", l2:"Discount %:", l3:"Final Price:", l4:"You Save:",
+            seo:"<h2>Professional Discount Calculator</h2><p>SmartDiscount.io is a specialized digital tool designed to simplify your shopping experience and financial decisions. Whether you're navigating seasonal sales, holiday markdowns, or business discounts, our calculator provides instant mathematical accuracy.</p><h2>How It Works</h2><p>Our tool uses advanced algorithms to process percentage-off amounts and fixed price reductions. By entering the original cost and the discount rate, you get a clear breakdown of your total savings and the final amount you need to pay at the checkout counter.</p><h2>Global Shopping Tool</h2><p>We support shoppers worldwide by providing a clean, ad-optimized interface that works perfectly on all mobile devices. Save money effectively by knowing exactly how much a sale is worth before you reach the register.</p>",
+            f:"SmartDiscount.io provides professional-grade financial tools for everyday consumers. All calculations are performed locally in your web browser, ensuring maximum privacy and data security. We do not store or track your financial inputs. Our service is 100% free to use.",
+            m1:"Privacy Policy", m2:"Terms of Use", p:"<h2>Privacy</h2><p>No data is collected.</p>", t:"<h2>Terms</h2><p>Use for info only.</p>"
         },
         uk: { 
-            l1:"Ціна:", l2:"Знижка %:", l3:"Разом:", m1:"Конфіденційність", m2:"Умови", 
-            seo:"<h2>Максимізуйте свою економію</h2><p>SmartDiscount.io створений для розумних покупців, які хочуть бачити свою економію в реальному часі. Наш професійний калькулятор знижок миттєво обробляє складні відсоткові розрахунки. Будь то сезонний розпродаж чи бізнес-знижка, ви отримуєте точну фінальну ціну.</p><h2>Точність у вашій кишені</h2><p>Цей інструмент оптимізований для мобільних пристроїв, що гарантує, що ви ніколи не переплатите на касі. Сервіс безкоштовний, безпечний і працює локально на вашому пристрої.</p>",
-            ft:"SmartDiscount.io пропонує професійні фінансові інструменти для щоденного використання. Наша мета — забезпечити точні та приватні розрахунки. Жодні дані не збираються. Користуйтеся вільно.",
-            p:"<h2>Конфіденційність</h2><p>Усі розрахунки відбуваються локально у вашому браузері. Ми не збираємо ваші дані.</p>", 
-            t:"<h2>Умови</h2><p>Результати мають ознайомчий характер. Перевіряйте ціни в магазині.</p>"
+            l1:"Початкова ціна:", l2:"Знижка %:", l3:"Кінцева ціна:", l4:"Ви економите:",
+            seo:"<h2>Професійний калькулятор знижок</h2><p>SmartDiscount.io — це спеціалізований цифровий інструмент, створений для спрощення ваших покупок та фінансових рішень. Незалежно від того, чи це сезонні розпродажі, святкові знижки чи бізнес-пропозиції, наш калькулятор забезпечує миттєву математичну точність.</p><h2>Як це працює</h2><p>Наш інструмент використовує алгоритми для швидкого розрахунку відсоткових знижок та фіксованих знижень ціни. Ввівши початкову вартість та розмір знижки, ви отримаєте детальний звіт про вашу загальну економію та фінальну суму, яку потрібно сплатити на касі.</p><h2>Глобальний інструмент</h2><p>Ми підтримуємо покупців по всьому світу, надаючи чистий, оптимізований інтерфейс, який ідеально працює на всіх мобільних пристроях. Економте гроші ефективно, знаючи точну вартість товару зі знижкою ще до того, як ви дійдете до каси.</p>",
+            f:"SmartDiscount.io пропонує професійні фінансові інструменти для щоденного використання. Усі розрахунки виконуються локально у вашому браузері, що гарантує максимальну приватність та безпеку даних. Ми не зберігаємо ваші дані. Сервіс безкоштовний.",
+            m1:"Конфіденційність", m2:"Умови використання", p:"<h2>Приватність</h2><p>Дані не збираються.</p>", t:"<h2>Умови</h2><p>Тільки для ознайомлення.</p>"
         },
-        es: { 
-            l1:"Precio:", l2:"Descuento %:", l3:"Final:", m1:"Privacidad", m2:"Términos", 
-            seo:"<h2>Maximice sus ahorros</h2><p>SmartDiscount.io está diseñado para compradores expertos. Nuestra calculadora de descuentos profesional maneja rebajas porcentuales complejas al instante.</p>",
-            ft:"SmartDiscount.io ofrece herramientas financieras profesionales. No se recogen datos.",
-            p:"<h2>Privacidad</h2><p>Sin recogida de datos.</p>", t:"<h2>Términos</h2><p>Solo info.</p>"
-        },
-        de: { 
-            l1:"Preis:", l2:"Rabatt %:", l3:"Endpreis:", m1:"Datenschutz", m2:"AGB", 
-            seo:"<h2>Maximieren Sie Ihre Ersparnis</h2><p>SmartDiscount.io ist für clevere Shopper gedacht. Unser Rabattrechner zeigt Ihnen sofort den Endpreis.</p>",
-            ft:"SmartDiscount.io bietet professionelle Finanztools. Keine Datenspeicherung.",
-            p:"<h2>Datenschutz</h2><p>Keine Datenspeicherung.</p>", t:"<h2>AGB</h2><p>Nur Info.</p>"
-        }
+        es: { l1:"Precio:", l2:"Descuento %:", l3:"Final:", l4:"Ahorras:", seo:"<h2>Calculadora de ahorros</h2><p>Optimice sus compras con precisión matemática.</p>", f:"Herramientas financieras profesionales y locales.", m1:"Privacidad", m2:"Términos", p:"<h2>Privacidad</h2>", t:"<h2>Términos</h2>" },
+        de: { l1:"Preis:", l2:"Rabatt %:", l3:"Endpreis:", l4:"Du sparst:", seo:"<h2>Rabattrechner</h2><p>Sparen Sie Geld bei jedem Einkauf.</p>", f:"Professionelle Finanztools für den täglichen Gebrauch.", m1:"Datenschutz", m2:"AGB", p:"<h2>Datenschutz</h2>", t:"<h2>AGB</h2>" }
     };
 
-    function calc() {
+    function clc() {
         const p = +document.getElementById('p').value || 0;
         const d = +document.getElementById('d').value || 0;
-        document.getElementById('f').value = (p - (p * d / 100)).toFixed(2);
+        const s = (p * d / 100);
+        document.getElementById('rf').value = (p - s).toLocaleString(undefined, {minimumFractionDigits: 2});
+        document.getElementById('rs').value = s.toLocaleString(undefined, {minimumFractionDigits: 2});
     }
 
-    function changeLang(l) {
-        const t = tr[l];
-        document.getElementById('l1').innerText = t.l1;
-        document.getElementById('l2').innerText = t.l2;
-        document.getElementById('l3').innerText = t.l3;
-        document.getElementById('seo-c').innerHTML = t.seo;
-        document.getElementById('ft').innerText = t.ft;
-        document.getElementById('m1').innerText = t.m1;
-        document.getElementById('m2').innerText = t.m2;
-        calc();
+    function upd(l) {
+        const t = data[l];
+        document.getElementById('lb1').innerText = t.l1; document.getElementById('lb2').innerText = t.l2;
+        document.getElementById('lb3').innerText = t.l3; document.getElementById('lb4').innerText = t.l4;
+        document.getElementById('seo-txt').innerHTML = t.seo; document.getElementById('f-desc').innerText = t.f;
+        document.getElementById('m1').innerText = t.m1; document.getElementById('m2').innerText = t.m2;
+        clc();
     }
 
-    window.onload = () => changeLang('en');
     function pop(type) {
-        const l = document.getElementById('lang').value;
-        document.getElementById('mb').innerHTML = type === 'p' ? tr[l].p : tr[l].t;
-        document.getElementById('md').style.display = 'block';
+        const l = document.getElementById('l-sel').value;
+        document.getElementById('m-body').innerHTML = '<span style="position:absolute;right:15px;top:5px;cursor:pointer;font-size:30px" onclick="document.getElementById(\'modal\').style.display=\'none\'">&times;</span>' + (type==='p'?data[l].p:data[l].t);
+        document.getElementById('modal').style.display = 'block';
     }
+    window.onload = () => upd('en');
 </script>
 </body>
 </html>
