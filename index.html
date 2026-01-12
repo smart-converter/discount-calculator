@@ -5,45 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="8boxzAKQUKKF8IEuVEX1wX8aUwcdch3Q11BgfGM3vkM" />
     <title>Smart Discount - Professional Sale & Savings Calculator</title>
-    <meta id="meta-desc" name="description" content="Calculate discounts, sale prices, and total savings instantly. Professional tool for shopping and business. Free, fast and accurate.">
+    <meta name="description" content="Calculate discounts, sale prices, and total savings instantly. Professional tool for shopping and business. Free, fast and accurate.">
     <style>
-        :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --accent-green: #22c55e;
-            --text-light: #f8fafc;
-            --text-muted: #cbd5e1;
-            --border-color: #334155;
-            --border-glow: rgba(255, 255, 255, 0.2);
-        }
+        :root { --bg-dark: #0f172a; --card-bg: #1e293b; --accent-green: #22c55e; --text-light: #f8fafc; --text-muted: #cbd5e1; --border-color: #334155; }
         body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-light); -webkit-font-smoothing: antialiased; }
         .top-header { background-color: #166534; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); }
-        .top-header h1 { margin: 0; font-size: 20px; font-weight: 900; color: white; }
-        .lang-switcher { background: var(--bg-dark); border: 2px solid white; color: white; padding: 4px 8px; border-radius: 8px; font-size: 15px; cursor: pointer; font-weight: 800; outline: none; min-height: 44px; }
-        
-        .container { max-width: 800px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
-        .ad-space { background: rgba(255, 255, 255, 0.05); border: 1px dashed var(--border-color); margin: 10px 0; text-align: center; padding: 15px; color: var(--text-muted); font-size: 11px; min-height: 90px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-        
+        .top-header h1 { margin: 0; font-size: 20px; font-weight: 900; }
+        .lang-switcher { background: var(--bg-dark); border: 2px solid white; color: white; padding: 4px 8px; border-radius: 8px; font-size: 15px; cursor: pointer; font-weight: 800; }
+        .container { max-width: 800px; margin: 0 auto; padding: 10px; box-sizing: border-box; min-height: 100vh; }
+        .ad-space { background: rgba(255, 255, 255, 0.05); border: 1px dashed var(--border-color); margin: 10px 0; text-align: center; padding: 15px; color: var(--text-muted); font-size: 11px; min-height: 90px; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
         .converter-box { border: 1px solid var(--border-color); padding: 30px 20px; background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); margin-top: 10px; }
         .row { display: flex; align-items: center; margin-bottom: 18px; }
-        .row label { width: 140px; font-size: 16px; color: var(--text-muted); font-weight: 700; }
-        .input-field { flex: 1; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 19px; font-weight: 800; background: #fff; color: #000; outline: none; width: 100%; box-sizing: border-box; height: 48px; }
+        .row label { width: 150px; font-size: 16px; color: var(--text-muted); font-weight: 700; }
+        .input-field { flex: 1; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 19px; font-weight: 800; width: 100%; box-sizing: border-box; height: 48px; background: #fff; color: #000; outline: none; }
         .result-field { background: #f0fdf4 !important; color: #166534 !important; border-color: #22c55e !important; }
         .save-field { background: #fef2f2 !important; color: #ef4444 !important; border-color: #fca5a5 !important; }
-
-        .seo-content { padding: 15px; line-height: 1.7; font-size: 15px; color: var(--text-muted); margin-top: 20px; }
+        .seo-content { padding: 15px; line-height: 1.7; font-size: 15px; color: var(--text-muted); margin-top: 20px; border-top: 1px solid var(--border-color); }
         .seo-content h2 { color: var(--accent-green); font-size: 19px; margin: 20px 0 10px; font-weight: 900; }
-
         .tools-network { padding: 20px 15px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 20px; }
-        .tools-network h2 { color: #cbd5e1; font-size: 14px; text-transform: uppercase; margin-bottom: 15px; }
+        .tools-network h2 { margin-bottom: 15px; color: var(--text-muted); font-size: 13px; text-transform: uppercase; font-weight: normal; }
         .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .tool-link-btn { padding: 12px 5px; border: 1px solid var(--accent-green); color: var(--accent-green); text-decoration: none; border-radius: 8px; font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; min-height: 48px; box-sizing: border-box; }
-        .tool-link-btn:last-child:nth-child(odd) { grid-column: 1 / span 2; width: 60%; justify-self: center; }
-
+        .tool-link-btn { padding: 12px 5px; border: 1px solid var(--accent-green); color: var(--accent-green); text-decoration: none; border-radius: 8px; font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
         footer { border-top: 1px solid var(--border-color); padding: 25px 15px; text-align: center; font-size: 13px; color: var(--text-muted); }
-        .footer-info-block { border: 2px solid var(--border-glow); border-radius: 12px; padding: 18px; margin-bottom: 15px; background: rgba(255, 255, 255, 0.05); text-align: left; line-height: 1.6; }
-        .policy-links { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
-        .policy-links a { color: var(--accent-green); text-decoration: underline; font-weight: 700; font-size: 13px; }
+        .footer-info-block { border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 18px; margin-bottom: 15px; background: rgba(255, 255, 255, 0.05); text-align: left; }
+        .footer-link { color: var(--accent-green); text-decoration: underline; cursor: pointer; padding: 0 10px; font-weight: 900; }
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; }
+        .modal-content { background: var(--card-bg); margin: 5% auto; padding: 25px; width: 85%; max-width: 600px; border-radius: 12px; position: relative; border: 1px solid var(--border-color); color: white; line-height: 1.6; }
+        .close-btn { position: absolute; right: 15px; top: 5px; font-size: 35px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -60,7 +48,6 @@
 
 <main class="container">
     <div class="ad-space">ADVERTISEMENT AREA</div>
-    
     <div class="converter-box">
         <div class="row"><label id="lbl-price">Original Price:</label><input type="number" id="price" class="input-field" value="100" oninput="calculate()"></div>
         <div class="row"><label id="lbl-discount">Discount %:</label><input type="number" id="discount" class="input-field" value="20" oninput="calculate()"></div>
@@ -69,12 +56,7 @@
             <div class="row"><label id="lbl-save">You Save:</label><input type="text" id="saveAmount" class="input-field save-field" readonly></div>
         </div>
     </div>
-
-    <section class="seo-content" id="seo-box">
-        <h2>Master Your Shopping Budget</h2>
-        <p>Our <strong>Discount Calculator</strong> is the perfect companion for smart shoppers. It helps you determine exactly how much you will pay and how much you will save during sales.</p>
-    </section>
-
+    <section class="seo-content" id="seo-box"></section>
     <section class="tools-network">
         <h2 id="txt-other-tools">Elite Network Tools</h2>
         <div class="tools-grid">
@@ -90,80 +72,94 @@
 </main>
 
 <footer>
-    <div class="footer-info-block" id="footer-full-text">
-        SmartDiscount.io is a specialized digital tool designed to simplify your shopping and financial decisions. All calculations are performed locally in your browser.
-    </div>
-    <p>© 2026 SmartDiscount.io - Professional Shopping Tools</p>
-    <div class="policy-links">
-        <a href="https://smart-converter.github.io/discount-calculator/privacy-policy.html" id="link-privacy">Privacy Policy</a>
-        <a href="https://smart-converter.github.io/discount-calculator/terms-of-use.html" id="link-terms">Terms of Use</a>
+    <div class="footer-info-block" id="footer-full-text"></div>
+    <p>© 2026 SmartDiscount.io</p>
+    <div style="margin-top:10px;">
+        <span class="footer-link" onclick="openPol('privacy')" id="link-privacy">Privacy Policy</span>
+        <span class="footer-link" onclick="openPol('terms')" id="link-terms">Terms of Use</span>
     </div>
 </footer>
+
+<div id="siteModal" class="modal" onclick="if(event.target == this) closeModal()">
+    <div class="modal-content"><span class="close-btn" onclick="closeModal()">×</span><div id="modalBody"></div></div>
+</div>
 
 <script>
     const translations = {
         en: {
             price: "Original Price:", discount: "Discount %:", final: "Final Price:", save: "You Save:",
             other: "Elite Network Tools", privacy: "Privacy Policy", terms: "Terms of Use",
-            footer: "SmartDiscount.io is a specialized digital tool designed to simplify your shopping and financial decisions. Whether you are navigating Black Friday deals, seasonal clearance sales, or business markdowns, our calculator provides instant, mathematical accuracy. All calculations are performed locally in your browser.",
-            seo: "<h2>Master Your Shopping Budget</h2><p>Our <strong>Discount Calculator</strong> is the perfect companion for smart shoppers. It helps you determine exactly how much you will pay and how much you will save during sales. No more mental math while standing in line.</p><h2>How It Works</h2><p>Simply enter the original sticker price and the discount percentage. Our tool instantly calculates the markdown and the final price, including precise decimals for professional use.</p>"
+            footer: "SmartDiscount.io is a professional tool for shopping accuracy. No data leaves your device.",
+            seo: "<h2>Master Your Shopping Budget</h2><p>Calculate discounts and savings instantly with precision.</p>",
+            privText: "<h2>Privacy</h2><p>All calculations happen locally in your browser. We do not track or store your data.</p>",
+            termsText: "<h2>Terms</h2><p>Results are for estimation purposes. Final price is determined by the retailer.</p>"
         },
         uk: {
             price: "Початкова ціна:", discount: "Знижка %:", final: "Ціна зі знижкою:", save: "Ви економите:",
-            other: "Інші професійні інструменти", privacy: "Конфіденційність", terms: "Умови",
-            footer: "SmartDiscount.io — це спеціалізований цифровий інструмент, створений для спрощення ваших покупок та фінансових рішень. Незалежно від того, чи це розпродажі до Чорної п'ятниці, чи сезонні знижки, наш калькулятор забезпечує миттєву математичну точність.",
-            seo: "<h2>Керуйте своїм бюджетом</h2><p>Наш калькулятор знижок — ідеальний помічник для розумних покупок. Він допомагає точно визначити, скільки ви заплатите і скільки заощадите під час розпродажів.</p><h2>Як це працює</h2><p>Просто введіть початкову ціну та відсоток знижки. Наш інструмент миттєво розрахує суму знижки та кінцеву ціну.</p>"
+            other: "Інші інструменти", privacy: "Конфіденційність", terms: "Умови",
+            footer: "SmartDiscount.io — інструмент для точних розрахунків. Дані не збираються.",
+            seo: "<h2>Керуйте бюджетом</h2><p>Розраховуйте знижки та вигоду миттєво з високою точністю.</p>",
+            privText: "<h2>Конфіденційність</h2><p>Розрахунки проводяться локально. Ми не збираємо ваші дані.</p>",
+            termsText: "<h2>Умови</h2><p>Дані мають ознайомчий характер. Остаточна ціна залежить від магазину.</p>"
         },
         es: {
-            price: "Precio original:", discount: "Descuento %:", final: "Precio final:", save: "Tú ahorras:",
+            price: "Precio Original:", discount: "Descuento %:", final: "Precio Final:", save: "Tu Ahorro:",
             other: "Otras herramientas", privacy: "Privacidad", terms: "Términos",
-            footer: "SmartDiscount.io es una herramienta digital especializada diseñada para simplificar sus compras. Nuestra calculadora proporciona precisión matemática instantánea.",
-            seo: "<h2>Domine su presupuesto</h2><p>Nuestra calculadora de descuentos es la compañera perfecta para compradores inteligentes.</p>"
+            footer: "SmartDiscount.io es una herramienta profesional para compras precisas.",
+            seo: "<h2>Optimiza tus Compras</h2><p>Calcula descuentos y ahorros al instante.</p>",
+            privText: "<h2>Privacidad</h2><p>Los cálculos se realizan de forma local en su navegador.</p>",
+            termsText: "<h2>Términos</h2><p>Uso informativo. El precio final puede variar según el vendedor.</p>"
         },
         de: {
-            price: "Originalpreis:", discount: "Rabatt %:", final: "Endpreis:", save: "Sie sparen:",
-            other: "Andere Werkzeuge", privacy: "Datenschutz", terms: "AGB",
-            footer: "SmartDiscount.io ist ein spezialisiertes digitales Tool, das Ihre Einkaufsentscheidungen vereinfacht. Unser Rechner bietet sofortige mathematische Genauigkeit.",
-            seo: "<h2>Meistern Sie Ihr Budget</h2><p>Unser Rabattrechner допоможе Ihnen, genau zu bestimmen, wie viel Sie sparen.</p>"
+            price: "Originalpreis:", discount: "Rabatt %:", final: "Endpreis:", save: "Ersparnis:",
+            other: "Andere Tools", privacy: "Datenschutz", terms: "AGB",
+            footer: "SmartDiscount.io ist ein Tool für präzise Rabattberechnungen.",
+            seo: "<h2>Shoppen mit System</h2><p>Berechnen Sie Ihre Ersparnis in Echtzeit.</p>",
+            privText: "<h2>Datenschutz</h2><p>Alle Berechnungen werden lokal auf Ihrem Gerät durchgeführt.</p>",
+            termsText: "<h2>AGB</h2><p>Die Angaben dienen der Schätzung. Der Endpreis wird vom Händler festgelegt.</p>"
         }
     };
+
+    let curLang = localStorage.getItem('langDisc') || 'en';
 
     function calculate() {
         const p = parseFloat(document.getElementById('price').value) || 0;
         const d = parseFloat(document.getElementById('discount').value) || 0;
         const s = (p * d) / 100;
         const f = p - s;
-        document.getElementById('finalPrice').value = f.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('saveAmount').value = s.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('finalPrice').value = f.toLocaleString(undefined, {minimumFractionDigits: 2});
+        document.getElementById('saveAmount').value = s.toLocaleString(undefined, {minimumFractionDigits: 2});
     }
 
     function changeLang(lang) {
+        curLang = lang;
         localStorage.setItem('langDisc', lang);
-        updateUI(lang);
+        updateUI();
     }
 
-    function updateUI(lang) {
-        const t = translations[lang] || translations.en;
-        const footerEl = document.getElementById('footer-full-text');
-        const seoEl = document.getElementById('seo-box');
-        
+    function updateUI() {
+        const t = translations[curLang] || translations.en;
+        document.getElementById('langSelect').value = curLang;
         document.getElementById('lbl-price').innerText = t.price;
         document.getElementById('lbl-discount').innerText = t.discount;
         document.getElementById('lbl-final').innerText = t.final;
         document.getElementById('lbl-save').innerText = t.save;
         document.getElementById('txt-other-tools').innerText = t.other;
-        if(footerEl) footerEl.innerText = t.footer;
-        if(seoEl) seoEl.innerHTML = t.seo;
+        document.getElementById('footer-full-text').innerText = t.footer;
         document.getElementById('link-privacy').innerText = t.privacy;
         document.getElementById('link-terms').innerText = t.terms;
+        document.getElementById('seo-box').innerHTML = t.seo;
         calculate();
     }
 
-    window.onload = function() {
-        const savedLang = localStorage.getItem('langDisc') || 'en';
-        document.getElementById('langSelect').value = savedLang;
-        updateUI(savedLang);
-    };
+    function openPol(type) {
+        const t = translations[curLang] || translations.en;
+        document.getElementById('modalBody').innerHTML = type === 'privacy' ? t.privText : t.termsText;
+        document.getElementById('siteModal').style.display = 'block';
+    }
+    function closeModal() { document.getElementById('siteModal').style.display = 'none'; }
+
+    window.onload = updateUI;
 </script>
 </body>
 </html>
